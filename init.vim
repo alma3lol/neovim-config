@@ -23,8 +23,8 @@ if !filereadable(expand("$vimPlugPath"))
             !wget -o $vimPlugPath "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
         endif
     endif
-    echom "Vim-plug installed successfuly.\n\nRestart vim/neovim."
-    q
+    echom "Vim-plug installed successfuly."
+    so $vimPlugPath
 endif
 
 set ff=unix
@@ -69,10 +69,12 @@ set cmdheight=2
 set nocompatible
 set hidden
 
+so $VIMRUNTIME/plugin/rplugin.vim
 so $CWD/plugins.vim
 
-if !filereadable(expand("$CWD/plugged/telescope.nvim/README.MD"))
+if !isdirectory(expand("$CWD/plugged"))
     PlugInstall --sync
+    q
 endif
 colorscheme cobalt2
 let g:dashboard_default_executive = 'telescope'

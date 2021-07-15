@@ -67,4 +67,5 @@ Plug 'gbrlsnchs/telescope-lsp-handlers.nvim'
 Plug 'norcalli/nvim-terminal.lua'
 Plug 'camgraff/telescope-tmux.nvim'
 Plug 'xiyaowong/telescope-emoji.nvim'
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 call plug#end()
