@@ -28,6 +28,7 @@ if !filereadable(expand("$vimPlugPath"))
 endif
 
 set ff=unix
+set mouse=a
 set modelines=0
 set wrap
 set pastetoggle=<F2>
@@ -76,9 +77,27 @@ if !isdirectory(expand("$CWD/plugged"))
     PlugInstall --sync
     q
 endif
+
+if !isdirectory(expand("$CWD/vscode-firefox-debug"))
+    echo "Installing vscode-firefox-debug..."
+    !git clone https://github.com/firefox-devtools/vscode-firefox-debug.git
+    cd vscode-firefox-debug
+    !npm i
+    !npm run build
+    cd $CWD
+endif
+if !isdirectory(expand("$CWD/vscode-node-debug2"))
+    echo "Installing vscode-node-debug2..."
+    !git clone https://github.com/microsoft/vscode-node-debug2.git
+    cd vscode-node-debug2
+    !npm i
+    !npx gulp build
+    cd $CWD
+endif
 colorscheme cobalt2
 let g:dashboard_default_executive = 'telescope'
 lua require'terminal'.setup()
+lua require("dapui").setup()
 
 so $CWD/airline.vim
 so $CWD/bindings.vim

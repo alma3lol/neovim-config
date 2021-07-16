@@ -281,6 +281,9 @@ map <leader><leader>v V
 map <leader>tt :FloatermToggle<CR>
 map <leader>tg :FloatermNew lazygit<CR>
 map <leader>tb :TagbarToggle<CR>
+map <leader>ts :Telescope tmux sessions<CR>
+map <leader>tw :Telescope tmux windows<CR>
+map <leader>tp :Telescope tmux pane_contents<CR>
 
 map <leader>db :Denite -auto-resize buffer<CR>
 map <leader>dh :Denite -auto-resize help<CR>
@@ -288,6 +291,7 @@ map <leader>dm :Denite -auto-resize mark<CR>
 map <leader>do :Denite -auto-resize outline<CR>
 map <leader>dr :Denite -auto-resize register<CR>
 
+map <leader>du :lua require("dapui").toggle()<CR>
 map <silent> <F5> :lua require'dap'.continue()<CR>
 map <silent> <F10> :lua require'dap'.step_over()<CR>
 map <silent> <F11> :lua require'dap'.step_into()<CR>
