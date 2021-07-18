@@ -73,10 +73,7 @@ set hidden
 so $VIMRUNTIME/plugin/rplugin.vim
 so $CWD/plugins.vim
 
-if !isdirectory(expand("$CWD/plugged"))
-    PlugInstall --sync
-    q
-endif
+autocmd VimEnter * PlugClean! | PlugUpdate --sync | close
 
 if !isdirectory(expand("$CWD/vscode-firefox-debug"))
     echo "Installing vscode-firefox-debug..."
