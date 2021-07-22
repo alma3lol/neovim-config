@@ -108,13 +108,8 @@ map <leader>rr :lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>:e<CR>
 map <leader>ii :LspInfo<CR>
 
 map gh :call v:lua.HoverInfo()<CR>
-map gd :lua vim.lsp.buf.definition()<CR>
 map gr :Telescope lsp_references<CR>
 map <leader>vdw :vs<CR>:lua vim.lsp.buf.definition()<CR>:sleep 100ms<CR>:wincmd h<CR>
-map [d :lua vim.lsp.diagnostic.goto_next()<CR>
-map ]d :lua vim.lsp.diagnostic.goto_prev()<CR>
-map <leader>ca :Telescope lsp_code_actions<CR>
-map <leader>rn :lua vim.lsp.buf.rename()<CR>
 map <silent> g0 :Telescope lsp_document_symbols<CR>
 map <silent> gW :Telescope lsp_workspace_symbols query=<C-R>=expand("<cword>")<CR><CR>
 map <leader>fiw :vimgrep <C-R>=expand("<cword>")<CR> %<CR>
@@ -173,10 +168,8 @@ map <leader><leader>m3 m3
 map <leader>m4 `4
 map <leader><leader>m4 m4
 
-map <leader>gg :Git<CR>
 map <leader>gf :Telescope git_files<CR>
-map <leader>gb :Git blame<CR>
-map <leader>gc :Telescope git_commits<CR>
+map gb :Git blame<CR>
 map <leader>gy ggyG<CR>
 map <leader>g= gg=G<CR>
 map <leader>gd ggdG<CR>
@@ -314,7 +307,20 @@ nmap <C-/> vgc
 nmap <leader>/ vgc
 nmap <leader> :silent WhichKey '<Space>'<CR>
 nmap <leader>sl :call SourceCurrentLine()<CR>
-
+nmap <leader>ca :Lspsaga code_action<CR>
+nnoremap <silent>gs :Lspsaga signature_help<CR>
+nnoremap <silent>gd :Lspsaga lsp_finder<CR>
+nnoremap <silent><C-f> <cmd>lua require('lspsaga.hover').smart_scroll_hover(1)<CR>
+nnoremap <silent><C-b> <cmd>lua require('lspsaga.hover').smart_scroll_hover(-1)<CR>
+nnoremap <silent><leader>rn :Lspsaga rename<CR>
+nnoremap <silent><leader>pd :Lspsaga preview_definition<CR>
+nnoremap <silent><leader>sd :Lspsaga show_line_diagnostics<CR>
+nnoremap <silent>[d :Lspsaga diagnostic_jump_next<CR>
+nnoremap <silent>]d :Lspsaga diagnostic_jump_prev<CR>
+nnoremap <silent><A-d> :Lspsaga open_floaterm<CR>
+nnoremap <silent><leader>gb :BufferLinePick<CR>
+nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+"
 "
 " Visual mode bindings
 "
@@ -328,6 +334,7 @@ vmap <leader>s{ S{
 vmap <leader>s[ S[
 vmap <leader>s( S(
 vmap <leader>sl :<C-w>call SourceSelectedLines()<CR>
+vmap <leader>ca :<C-U>Lspsaga range_code_action<CR>
 
 "
 " Insert mode bindings
@@ -344,8 +351,10 @@ inoremap <silent><expr> <CR>      compe#confirm('<CR>')
 inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4  })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4  })
+inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
 
 "
 " Terminal mode bindings
 "
 tnoremap <Esc> <C-\><C-n>
+tnoremap <silent> <A-d> <C-\><C-n>:Lspsaga close_floaterm<CR>
