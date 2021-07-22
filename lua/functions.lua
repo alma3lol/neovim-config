@@ -1,10 +1,11 @@
 local dap = require('dap')
 local variables = require('dap.ui.variables')
+local lspSaga = require('lspsaga.hover')
 
 function _G.HoverInfo()
 	local debugSession = dap.session()
-	if debugSession == nil then
-		vim.lsp.buf.hover()
+	if debugSession == nil or debugSession.stopped_thread_id == nil then
+		lspSaga.render_hover_doc()
 	else
 		variables.hover()
 	end
