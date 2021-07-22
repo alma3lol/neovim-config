@@ -27,6 +27,7 @@ if !filereadable(expand("$vimPlugPath"))
     so $vimPlugPath
 endif
 
+set completeopt=menuone,noselect
 set ff=unix
 set mouse=a
 set modelines=0
@@ -91,29 +92,47 @@ if !isdirectory(expand("$CWD/vscode-node-debug2"))
     !npx gulp build
     cd $CWD
 endif
-colorscheme cobalt2
+colorscheme aurora
 let g:dashboard_default_executive = 'telescope'
+let g:dap_virtual_text = v:true
 lua require'terminal'.setup()
 lua require("dapui").setup()
 
-so $CWD/airline.vim
+" so $CWD/airline.vim
 so $CWD/bindings.vim
 so $CWD/bufbuild.vim
 so $CWD/compe.vim
+luafile $CWD/lua/bufferline.lua
 luafile $CWD/lua/compe-config.lua
 luafile $CWD/lua/dap-config.lua
 so $CWD/denite.vim
 so $CWD/emmet.vim
 so $CWD/whichkey.vim
 so $CWD/floaterm.vim
-luafile $CWD/functions.lua
+luafile $CWD/lua/feline-providers.lua
+luafile $CWD/lua/feline.lua
 luafile $CWD/lua/functions.lua
+luafile $CWD/lua/gitsigns.lua
 luafile $CWD/lua/lsp-config.lua
 luafile $CWD/lua/lspsaga-config.lua
+luafile $CWD/lua/lspinstall.lua
+" luafile $CWD/lua/lualine.lua
 so $CWD/signify.vim
 so $CWD/sneak.vim
 so $CWD/syntastic.vim
 so $CWD/telescope.vim
 luafile $CWD/lua/telescope.lua
 luafile $CWD/lua/treesitter.lua
+luafile $CWD/lua/toggleterm.lua
 so $CWD/vsnips.vim
+
+highlight link LspSagaFinderSelection Search
+
+augroup LuaHighlight
+  au!
+  au TextYankPost * lua vim.highlight.on_yank {
+        \ higroup = "Substitute",
+        \ timeout = 150,
+        \ on_macro = true
+        \ }
+augroup END
