@@ -93,221 +93,218 @@ function! GenerateCTagsForCurrentFile()
 endfunction
 
 "
-" Normal, Visual, Select, Operator-pending modes bindings
+" Normal mode bindings
 "
-map <C-e> :Telescope file_browser hidden=true<CR>
-map <C-h> :SidewaysLeft<CR>
-map <C-l> :SidewaysRight<CR>
-map <C-k>s :wa<CR>
-map <C-k>w :bufdo bd<CR>
+nnoremap <C-e> :Telescope file_browser hidden=true<CR>
+nnoremap <C-h> :SidewaysLeft<CR>
+nnoremap <C-l> :SidewaysRight<CR>
+nnoremap <C-k>s :wa<CR>
+nnoremap <C-k>w :bufdo bd<CR>
 
-map <leader>of :e <C-R>=expand("<cfile>")<CR><CR>
-map <leader>ocd :Telescope file_browser hidden=true cwd=<C-R>=expand('%:p:h')<CR><CR>
+nnoremap <leader>of :e <C-R>=expand("<cfile>")<CR><CR>
+nnoremap <leader>ocd :Telescope file_browser hidden=true cwd=<C-R>=expand('%:p:h')<CR><CR>
 
-map <leader>rr :lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>:e<CR>
-map <leader>ii :LspInfo<CR>
+nnoremap <leader>rr :lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>:e<CR>
+nnoremap <leader>ii :LspInfo<CR>
 
-map gh :call v:lua.HoverInfo()<CR>
-map gr :Telescope lsp_references<CR>
-map <leader>vdw :vs<CR>:lua vim.lsp.buf.definition()<CR>:sleep 100ms<CR>:wincmd h<CR>
-map <silent> g0 :Telescope lsp_document_symbols<CR>
-map <silent> gW :Telescope lsp_workspace_symbols query=<C-R>=expand("<cword>")<CR><CR>
-map <leader>fiw :vimgrep <C-R>=expand("<cword>")<CR> %<CR>
-map <leader>fip :call FindInProjectQuickFixList()<CR>
-map <leader><leader>fm :%s/\r//g<CR>
-map <leader>qk :cprevious<CR>
-map <leader>qj :lnext<CR>
-map <leader>qb :cprevious<CR>
-map <leader>qn :cnext<CR>
-map <leader>qq :call QuickFixToggle()<CR>
+nnoremap gh :call v:lua.HoverInfo()<CR>
+nnoremap gr :Telescope lsp_references<CR>
+nnoremap <leader>vdw :vs<CR>:lua vim.lsp.buf.definition()<CR>:sleep 100ms<CR>:wincmd h<CR>
+nnoremap <silent> g0 :Telescope lsp_document_symbols<CR>
+nnoremap <silent> gW :Telescope lsp_workspace_symbols query=<C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>fiw :vimgrep <C-R>=expand("<cword>")<CR> %<CR>
+nnoremap <leader>fip :call FindInProjectQuickFixList()<CR>
+nnoremap <leader><leader>fm :%s/\r//g<CR>
+nnoremap <leader>qk :cprevious<CR>
+nnoremap <leader>qj :lnext<CR>
+nnoremap <leader>qb :cprevious<CR>
+nnoremap <leader>qn :cnext<CR>
+nnoremap <leader>qq :call QuickFixToggle()<CR>
 
-map <leader>1 :bN<CR>
-map <leader>2 :bn<CR>
-map <leader>3 #
-map <leader>4 $
-map <leader>5 %
-map <leader>6 ^
-map <leader>7 &
-map <leader>8 *
-map <leader><leader>1 :q<CR>
-map <leader><leader>2 :e $CWD/init.vim<CR>
-map <leader><leader>5 :so $CWD/init.vim<CR>
+nnoremap <leader>1 :bN<CR>
+nnoremap <leader>2 :bn<CR>
+nnoremap <leader>3 #
+nnoremap <leader>4 $
+nnoremap <leader>5 %
+nnoremap <leader>6 ^
+nnoremap <leader>7 &
+nnoremap <leader>8 *
+nnoremap <leader><leader>1 :q<CR>
+nnoremap <leader><leader>2 :e $CWD/init.vim<CR>
+nnoremap <leader><leader>5 :so $CWD/init.vim<CR>
 
-map <leader>ft :Telescope filetypes<CR>
-map <leader>sf :call SourceCurrentFile()<CR>
-map <leader>fw :Telescope grep_string search=<C-R>=expand("<cword>")<CR><CR>
-map <leader>fs :Telescope live_grep<CR>
-map <leader>fh :Telescope help_tags<CR>
-map <leader>fhw :h <C-R>=expand("<cword>")<CR><CR>
-map <leader>fm :Telescope marks<CR>
-map <leader>ff :Telescope find_files hidden=true<CR>
-map <leader>fd :Telescope file_browser cwd=$CWD hidden=true<CR>
-map <leader>fe :Telescope file_browser hidden=true<CR>
-map <leader>fb :Telescope buffers<CR>
-map <leader>fr :Telescope lsp_references<CR>
-map <leader>fds :Telescope lsp_document_symbols<CR>
-map <leader>fws :Telescope lsp_workspace_symbols<CR>
-map <leader>bb :Telescope buffers<CR>
-map <leader>cs :Telescope colorscheme<CR>
-map <leader>cw :Windows<CR>
+nnoremap <leader>ft :Telescope filetypes<CR>
+nnoremap <leader>sf :call SourceCurrentFile()<CR>
+nnoremap <leader>fw :Telescope grep_string search=<C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>fs :Telescope live_grep<CR>
+nnoremap <leader>fh :Telescope help_tags<CR>
+nnoremap <leader>fhw :h <C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>fm :Telescope marks<CR>
+nnoremap <leader>ff :Telescope find_files hidden=true<CR>
+nnoremap <leader>fd :Telescope file_browser cwd=$CWD hidden=true<CR>
+nnoremap <leader>fe :Telescope file_browser hidden=true<CR>
+nnoremap <leader>fb :Telescope buffers<CR>
+nnoremap <leader>fr :Telescope lsp_references<CR>
+nnoremap <leader>fds :Telescope lsp_document_symbols<CR>
+nnoremap <leader>fws :Telescope lsp_workspace_symbols<CR>
+nnoremap <leader>bb :Telescope buffers<CR>
+nnoremap <leader>cs :Telescope colorscheme<CR>
+nnoremap <leader>cw :Windows<CR>
 
-map <leader><leader>p :Telescope project<CR>
+nnoremap <leader><leader>p :Telescope project<CR>
 
-map <leader>sa :wa<CR>
-map <leader>ss :Startify<CR>
+nnoremap <leader>sa :wa<CR>
+nnoremap <leader>ss :Startify<CR>
 
-map <leader>pp :VsnipOpen<CR>
-map <leader>nn :NERDTreeToggle<CR>
+nnoremap <leader>pp :VsnipOpen<CR>
+nnoremap <leader>nn :NERDTreeToggle<CR>
 
-map <leader>m1 `1
-map <leader><leader>m1 m1
-map <leader>m2 `2
-map <leader><leader>m2 m2
-map <leader>m3 `3
-map <leader><leader>m3 m3
-map <leader>m4 `4
-map <leader><leader>m4 m4
+nnoremap <leader>m1 `1
+nnoremap <leader><leader>m1 m1
+nnoremap <leader>m2 `2
+nnoremap <leader><leader>m2 m2
+nnoremap <leader>m3 `3
+nnoremap <leader><leader>m3 m3
+nnoremap <leader>m4 `4
+nnoremap <leader><leader>m4 m4
 
-map <leader>gf :Telescope git_files<CR>
-map gb :Git blame<CR>
-map <leader>gy ggyG<CR>
-map <leader>g= gg=G<CR>
-map <leader>gd ggdG<CR>
+nnoremap <leader>gf :Telescope git_files<CR>
+nnoremap gb :Git blame<CR>
+nnoremap <leader>gy ggyG<CR>
+nnoremap <leader>g= gg=G<CR>
+nnoremap <leader>gd ggdG<CR>
 
-map <silent> <leader>ct :call GenerateCTagsForCurrentFile()<CR><CR>
-map <silent> <leader>vt :execute 'Telescope tags ctags_file='..$CTAGS_DIR..UrlEncode(expand('%:p'))<CR>
+nnoremap <silent> <leader>ct :call GenerateCTagsForCurrentFile()<CR><CR>
+nnoremap <silent> <leader>vt :execute 'Telescope tags ctags_file='..$CTAGS_DIR..UrlEncode(expand('%:p'))<CR>
 
-map <leader>d. dt.
-map <leader>d, dt,
-map <leader>d' dt'
-map <leader>d" dt"
-map <leader>d` dt`
-map <leader><leader>d' di'
-map <leader><leader>d" di"
-map <leader><leader>d` di`
-map <leader>d9 di(
-map <leader>d0 dt)
-map <leader>d[ di[
-map <leader>d] dt]
-map <leader>d{ di{
-map <leader>d} dt}
-map <leader>d; dt;
-map <leader>d4 d$
-map <leader>d5 di%
-map <leader>d6 d^
+nnoremap <leader>d. dt.
+nnoremap <leader>d, dt,
+nnoremap <leader>d' dt'
+nnoremap <leader>d" dt"
+nnoremap <leader>d` dt`
+nnoremap <leader><leader>d' di'
+nnoremap <leader><leader>d" di"
+nnoremap <leader><leader>d` di`
+nnoremap <leader>d9 di(
+nnoremap <leader>d0 dt)
+nnoremap <leader>d[ di[
+nnoremap <leader>d] dt]
+nnoremap <leader>d{ di{
+nnoremap <leader>d} dt}
+nnoremap <leader>d; dt;
+nnoremap <leader>d4 d$
+nnoremap <leader>d5 di%
+nnoremap <leader>d6 d^
 
-map <leader>c. ct.
-map <leader>c, ct,
-map <leader>c' ct'
-map <leader>c" ct"
-map <leader>c` ct`
-map <leader><leader>c' ci'
-map <leader><leader>c" ci"
-map <leader><leader>c` ci`
-map <leader>c9 ci(
-map <leader>c0 ct)
-map <leader>c[ ci[
-map <leader>c] ct]
-map <leader>c{ ci{
-map <leader>c} ct}
-map <leader>c; ct;
-map <leader>c4 c$
-map <leader>c5 ci%
-map <leader>c6 c^
+nnoremap <leader>c. ct.
+nnoremap <leader>c, ct,
+nnoremap <leader>c' ct'
+nnoremap <leader>c" ct"
+nnoremap <leader>c` ct`
+nnoremap <leader><leader>c' ci'
+nnoremap <leader><leader>c" ci"
+nnoremap <leader><leader>c` ci`
+nnoremap <leader>c9 ci(
+nnoremap <leader>c0 ct)
+nnoremap <leader>c[ ci[
+nnoremap <leader>c] ct]
+nnoremap <leader>c{ ci{
+nnoremap <leader>c} ct}
+nnoremap <leader>c; ct;
+nnoremap <leader>c4 c$
+nnoremap <leader>c5 ci%
+nnoremap <leader>c6 c^
 
-map <leader>y. yt.
-map <leader>y, yt,
-map <leader>y' yt'
-map <leader>y" yt"
-map <leader>y` yt`
-map <leader><leader>y' yi'
-map <leader><leader>y" yi"
-map <leader><leader>y` yi`
-map <leader>y9 yi(
-map <leader>y0 yt)
-map <leader>y[ yi[
-map <leader>y] yt]
-map <leader>y{ yi{
-map <leader>y} yt}
-map <leader>y; yt;
-map <leader>y4 y$
-map <leader>y5 yi%
-map <leader>y6 y^
+nnoremap <leader>y. yt.
+nnoremap <leader>y, yt,
+nnoremap <leader>y' yt'
+nnoremap <leader>y" yt"
+nnoremap <leader>y` yt`
+nnoremap <leader><leader>y' yi'
+nnoremap <leader><leader>y" yi"
+nnoremap <leader><leader>y` yi`
+nnoremap <leader>y9 yi(
+nnoremap <leader>y0 yt)
+nnoremap <leader>y[ yi[
+nnoremap <leader>y] yt]
+nnoremap <leader>y{ yi{
+nnoremap <leader>y} yt}
+nnoremap <leader>y; yt;
+nnoremap <leader>y4 y$
+nnoremap <leader>y5 yi%
+nnoremap <leader>y6 y^
 
-map <leader>bd :bd<CR>
-map <leader>xbd :bd!<CR>
-map <leader>bn :ene<CR>
+nnoremap <leader>bd :bd<CR>
+nnoremap <leader>xbd :bd!<CR>
+nnoremap <leader>bn :ene<CR>
 
-map <leader>w :w<CR>
-map <leader>xw :w!<CR>
-map <leader>vw :vs<CR>
-map <leader>nvw :sp<CR>
-map <leader>nt :tab split<CR>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>xw :w!<CR>
+nnoremap <leader>vw :vs<CR>
+nnoremap <leader>nvw :sp<CR>
+nnoremap <leader>nt :tab split<CR>
 
-map <leader>ys :FloatermNew yarn start<CR>
-map <leader>yb :FloatermNew yarn build<CR>
-map <leader>yt :FloatermNew yarn test<CR>
-map <leader>yd :FloatermNew yarn debug<CR>
-map <leader>df :FloatermNew node --inspect %<CR>
+nnoremap <leader>ys :FloatermNew yarn start<CR>
+nnoremap <leader>yb :FloatermNew yarn build<CR>
+nnoremap <leader>yt :FloatermNew yarn test<CR>
+nnoremap <leader>yd :FloatermNew yarn debug<CR>
+nnoremap <leader>df :FloatermNew node --inspect %<CR>
 
-map <leader>h :wincmd h<CR>
-map <leader>j :wincmd j<CR>
-map <leader>k :wincmd k<CR>
-map <leader>l :wincmd l<CR>
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
 
-map <leader>mm :MaximizerToggle<CR>
-map <leader>u :UndotreeToggle<CR>
+nnoremap <leader>mm :MaximizerToggle<CR>
+nnoremap <leader>u :UndotreeToggle<CR>
 
-map <leader><leader>ww :Windows<CR>
-map <leader><leader>w= :wincmd =<CR>
-map <leader>o :on<CR>
-map <leader>ow :on<CR>
-map <leader>ot :tabonly<CR>
+nnoremap <leader><leader>ww :Windows<CR>
+nnoremap <leader><leader>w= :wincmd =<CR>
+nnoremap <leader>o :on<CR>
+nnoremap <leader>ow :on<CR>
+nnoremap <leader>ot :tabonly<CR>
 
-map <C-Left> :tabprevious<CR>
-map <C-Right> :tabnext<CR>
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
 nnoremap <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 
-map <leader><leader>v V
+nnoremap <leader><leader>v V
 
-map <leader>tt :FloatermToggle<CR>
-map <leader>tg :FloatermNew lazygit<CR>
-map <leader>tb :TagbarToggle<CR>
-map <leader>ts :Telescope tmux sessions<CR>
-map <leader>tw :Telescope tmux windows<CR>
-map <leader>tp :Telescope tmux pane_contents<CR>
+nnoremap <leader>tt :FloatermToggle<CR>
+nnoremap <leader>tg :FloatermNew lazygit<CR>
+nnoremap <leader>tb :TagbarToggle<CR>
+nnoremap <leader>ts :Telescope tmux sessions<CR>
+nnoremap <leader>tw :Telescope tmux windows<CR>
+nnoremap <leader>tp :Telescope tmux pane_contents<CR>
 
-map <leader>db :Denite -auto-resize buffer<CR>
-map <leader>dh :Denite -auto-resize help<CR>
-map <leader>dm :Denite -auto-resize mark<CR>
-map <leader>do :Denite -auto-resize outline<CR>
-map <leader>dr :Denite -auto-resize register<CR>
+nnoremap <leader>db :Denite -auto-resize buffer<CR>
+nnoremap <leader>dh :Denite -auto-resize help<CR>
+nnoremap <leader>dm :Denite -auto-resize mark<CR>
+nnoremap <leader>do :Denite -auto-resize outline<CR>
+nnoremap <leader>dr :Denite -auto-resize register<CR>
 
-map <leader>du :lua require("dapui").toggle()<CR>
-map <silent> <F5> :lua require'dap'.continue()<CR>
-map <silent> <F10> :lua require'dap'.step_over()<CR>
-map <silent> <F11> :lua require'dap'.step_into()<CR>
-map <silent> <F12> :lua require'dap'.step_out()<CR>
-map <silent> <F9> :lua require'dap'.toggle_breakpoint()<CR>
-map <silent> bl :lua require'dap'.list_breakpoints()<CR>
-map <silent> <leader>b :lua require'dap'.toggle_breakpoint()<CR>
-map <silent> <leader>B :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
-map <silent> <leader>bl :lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
-map <silent> <leader>ro :lua require'dap'.repl.open()<CR>
-map <silent> <leader>rl :lua require'dap'.run_last()<CR>
+nnoremap <leader>du :lua require("dapui").toggle()<CR>
+nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
+nnoremap <silent> <F10> :lua require'dap'.step_over()<CR>
+nnoremap <silent> <F11> :lua require'dap'.step_into()<CR>
+nnoremap <silent> <F12> :lua require'dap'.step_out()<CR>
+nnoremap <silent> <F9> :lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> bl :lua require'dap'.list_breakpoints()<CR>
+nnoremap <silent> <leader>b :lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> <leader>B :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
+nnoremap <silent> <leader>bl :lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
+nnoremap <silent> <leader>ro :lua require'dap'.repl.open()<CR>
+nnoremap <silent> <leader>rl :lua require'dap'.run_last()<CR>
 
-"
-" Normal mode bindings
-"
-nmap <F2> :set invpaste paste?<CR><CR>
-nmap <leader>vp V}
-nmap <leader>vb <C-V>}
-nmap <C-/> vgc
-nmap <leader>/ vgc
-nmap <leader> :silent WhichKey '<Space>'<CR>
-nmap <leader>sl :call SourceCurrentLine()<CR>
-nmap <leader>ca :Lspsaga code_action<CR>
+nnoremap <F2> :set invpaste paste?<CR><CR>
+nnoremap <leader>vp V}
+nnoremap <leader>vb <C-V>}
+nnoremap <C-/> vgc
+nnoremap <leader>/ vgc
+nnoremap <leader> :silent WhichKey '<Space>'<CR>
+nnoremap <leader>sl :call SourceCurrentLine()<CR>
+nnoremap <leader>ca :Lspsaga code_action<CR>
 nnoremap <silent>gs :Lspsaga signature_help<CR>
 nnoremap <silent>gd :Lspsaga lsp_finder<CR>
 nnoremap <silent><C-f> <cmd>lua require('lspsaga.hover').smart_scroll_hover(1)<CR>
@@ -331,27 +328,27 @@ nnoremap gR <cmd>TroubleToggle lsp_references<cr>
 "
 " Visual mode bindings
 "
-vmap <C-/> gc
-vmap <leader>/ vgc
-vmap <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
-vmap <leader>s' S'
-vmap <leader>s" S"
-vmap <leader>s` S`
-vmap <leader>s{ S{
-vmap <leader>s[ S[
-vmap <leader>s( S(
-vmap <leader>sl :<C-w>call SourceSelectedLines()<CR>
-vmap <leader>ca :<C-U>Lspsaga range_code_action<CR>
+vnoremap <C-/> gc
+vnoremap <leader>/ vgc
+vnoremap <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
+vnoremap <leader>s' S'
+vnoremap <leader>s" S"
+vnoremap <leader>s` S`
+vnoremap <leader>s{ S{
+vnoremap <leader>s[ S[
+vnoremap <leader>s( S(
+vnoremap <leader>sl :<C-w>call SourceSelectedLines()<CR>
+vnoremap <leader>ca :<C-U>Lspsaga range_code_action<CR>
 
 "
 " Insert mode bindings
 "
-imap <F2> <C-O>:set invpaste paste?<CR><CR>
-imap <leader><leader><Backspace> <Esc>v^c
-imap <leader>tt <Esc>:FloatermToggle<CR>
-imap <leader><leader>o <Esc>o
-imap <leader><leader>no <Esc>O
-imap <leader><leader>p <Esc>pa
+inoremap <F2> <C-O>:set invpaste paste?<CR><CR>
+inoremap <leader><leader><Backspace> <Esc>v^c
+inoremap <leader>tt <Esc>:FloatermToggle<CR>
+inoremap <leader><leader>o <Esc>o
+inoremap <leader><leader>no <Esc>O
+inoremap <leader><leader>p <Esc>pa
 inoremap <silent><expr> <C-Space> compe#complete()
 inoremap <silent><expr> <NULL> compe#complete()
 inoremap <silent><expr> <CR>      compe#confirm('<CR>')
