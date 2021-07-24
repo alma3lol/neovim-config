@@ -115,7 +115,7 @@ nnoremap <silent> gW :Telescope lsp_workspace_symbols query=<C-R>=expand("<cword
 nnoremap <leader>fiw :vimgrep <C-R>=expand("<cword>")<CR> %<CR>
 nnoremap <leader>fip :call FindInProjectQuickFixList()<CR>
 nnoremap <leader><leader>fm :%s/\r//g<CR>
-nnoremap <leader>qk :cprevious<CR>
+nnoremap <leader>qk :lprevious<CR>
 nnoremap <leader>qj :lnext<CR>
 nnoremap <leader>qb :cprevious<CR>
 nnoremap <leader>qn :cnext<CR>
