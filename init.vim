@@ -6,7 +6,9 @@ let $undoDir=stdpath('data')."/undodir"
 " This section is for installing vim-plug "
 """""""""""""""""""""""""""""""""""""""""""
 let $vimPlugPath=stdpath('data')."/site/autoload/plug.vim"
+let s:vimPlugJustInstalled = v:false
 if !filereadable(expand("$vimPlugPath"))
+    s:vimPlugJustInstalled = v:true
     echom "Installing Vim-plug...\n"
     if has('win32')
         if executable('curl')
@@ -26,6 +28,13 @@ if !filereadable(expand("$vimPlugPath"))
     echom "Vim-plug installed successfuly."
     so $vimPlugPath
 endif
+so $VIMRUNTIME/plugin/rplugin.vim
+so $CWD/plugins.vim
+
+if (s:vimPlugJustInstalled == v:true)
+    PlugClean! | PlugUpdate --sync | close
+endif
+
 
 autocmd VimEnter * PlugClean! | PlugUpdate --sync | close
 
@@ -73,8 +82,6 @@ set cmdheight=2
 set nocompatible
 set hidden
 
-so $VIMRUNTIME/plugin/rplugin.vim
-so $CWD/plugins.vim
 let g:instant_username = "Alma3lol"
 
 if !isdirectory(expand("$CWD/vscode-firefox-debug"))
@@ -131,10 +138,10 @@ so $CWD/vsnips.vim
 highlight link LspSagaFinderSelection Search
 
 augroup LuaHighlight
-  au!
-  au TextYankPost * lua vim.highlight.on_yank {
-        \ higroup = "Substitute",
-        \ timeout = 150,
-        \ on_macro = true
-        \ }
+    au!
+    au TextYankPost * lua vim.highlight.on_yank {
+                \ higroup = "Substitute",
+                \ timeout = 150,
+                \ on_macro = true
+                \ }
 augroup END
