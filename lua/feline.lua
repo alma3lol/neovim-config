@@ -15,20 +15,271 @@ local properties = {
 
 local components = {
 	left = {
-		active = {},
-		inactive = {}
+		active = {
+			{
+				provider = '▊ ',
+				hl = {
+					fg = 'skyblue'
+				}
+			},
+			{
+				provider = 'vi_mode',
+				icon = '',
+				left_sep = {
+					str = ' ',
+					hl = {
+						fg = 'green',
+						bg = 'black'
+					}
+				},
+				hl = function()
+					local val = {}
+					val.name = vi_mode_utils.get_vim_mode()
+					val.fg = vi_mode_utils.get_mode_color()
+					val.style = 'bold'
+					return val
+				end,
+			},
+			{
+				provider = 'file_info',
+				hl = {
+					fg = 'white',
+					bg = 'oceanblue',
+					style = 'bold'
+				},
+				left_sep = {
+					' ', 'slant_left_2',
+					{str = ' ', hl = {bg = 'oceanblue', fg = 'NONE'}}
+				},
+				right_sep = {'slant_right_2', ' '}
+			},
+			{
+				provider = 'file_size',
+				enabled = function() return fn.getfsize(fn.expand('%:p')) > 0 end,
+				right_sep = {
+					' ',
+					{
+						str = 'slant_left_2_thin',
+						hl = {
+							fg = 'fg',
+							bg = 'bg'
+						}
+					},
+				}
+			},
+			{
+				provider = 'position',
+				left_sep = ' ',
+				right_sep = {
+					' ',
+					{
+						str = 'slant_right_2_thin',
+						hl = {
+							fg = 'fg',
+							bg = 'bg'
+						}
+					}
+				}
+			},
+			{
+				provider = 'lsp_client_names',
+				left_sep = '  ',
+				icon = ' ',
+				hl = {
+					fg = '#e0af68'
+				}
+			},
+			{
+				provider = 'diagnostic_errors',
+				enabled = function() return lsp.diagnostics_exist('Error') end,
+				hl = { fg = 'red' }
+			},
+			{
+				provider = 'diagnostic_warnings',
+				enabled = function() return lsp.diagnostics_exist('Warning') end,
+				hl = { fg = 'yellow' }
+			},
+			{
+				provider = 'diagnostic_hints',
+				enabled = function() return lsp.diagnostics_exist('Hint') end,
+				hl = { fg = 'cyan' }
+			},
+			{
+				provider = 'diagnostic_info',
+				enabled = function() return lsp.diagnostics_exist('Information') end,
+				hl = { fg = 'skyblue' }
+			},
+		},
+		inactive = {
+			{
+				provider = 'file_type',
+				hl = {
+					fg = 'white',
+					bg = 'oceanblue',
+					style = 'bold'
+				},
+				left_sep = {
+					str = ' ',
+					hl = {
+						fg = 'NONE',
+						bg = 'oceanblue'
+					}
+				},
+				right_sep = {
+					{
+						str = ' ',
+						hl = {
+							fg = 'NONE',
+							bg = 'oceanblue'
+						}
+					},
+					'slant_right'
+				}
+			},
+		}
 	},
 	mid = {
 		active = {},
 		inactive = {}
 	},
 	right = {
-		active = {},
-		inactive = {}
+		active = {
+			{
+				provider = 'file_type',
+			},
+			{
+				provider = 'file_encoding',
+				left_sep = {
+					str = '  ',
+					hl = {
+						fg = 'white',
+						bg = 'black'
+					}
+				},
+			},
+			{
+				provider = 'git_branch',
+				enabled = function() return git_branch({}) ~= '' end,
+				hl = {
+					fg = 'white',
+					bg = 'black',
+					style = 'bold'
+				},
+				left_sep = {
+					str = ' ',
+					hl = {
+						fg = 'white',
+						bg = 'black'
+					}
+				},
+			},
+			{
+				provider = 'git_diff_added',
+				enabled = function() return git_branch({}) ~= '' end,
+				hl = {
+					fg = 'green',
+					bg = 'black'
+				},
+			},
+			{
+				provider = 'git_diff_changed',
+				hl = {
+					fg = 'orange',
+					bg = 'black'
+				}
+			},
+			{
+				provider = 'git_diff_removed',
+				hl = {
+					fg = 'red',
+					bg = 'black'
+				},
+			},
+			{
+				provider = 'line_percentage',
+				hl = {
+					style = 'bold'
+				},
+				left_sep = {
+					str = '  ',
+					hl = {
+						fg = 'white',
+						bg = 'black'
+					}
+				},
+				right_sep = ' '
+			},
+			{
+				provider = 'scroll_bar',
+				hl = {
+					fg = 'skyblue',
+					style = 'bold'
+				}
+			},
+			{
+				provider = 'battery',
+				hl = {
+					fg = 'black',
+					bg = 'white',
+				},
+				left_sep = {
+					str = ' ',
+					hl = {
+						bg = 'black',
+						fg = 'white',
+					},
+				},
+			},
+			{
+				provider = 'os_type',
+				hl = {
+					fg = 'black',
+					bg = 'white',
+				},
+				right_sep = {
+					str = ' ',
+					hl = {
+						bg = 'black',
+						fg = 'white',
+					},
+				},
+			},
+		},
+		inactive = {
+			{
+				provider = 'battery',
+				hl = {
+					fg = 'black',
+					bg = 'white',
+				},
+				left_sep = {
+					str = ' ',
+					hl = {
+						bg = 'black',
+						fg = 'white',
+					},
+				},
+			},
+			{
+				provider = 'os_type',
+				hl = {
+					fg = 'black',
+					bg = 'white',
+				},
+				right_sep = {
+					str = ' ',
+					hl = {
+						bg = 'black',
+						fg = 'white',
+					},
+				},
+			},
+		}
 	}
 }
 
 properties.force_inactive.filetypes = {
+	'nerdtree',
 	'NvimTree',
 	'dbui',
 	'packer',
@@ -38,221 +289,7 @@ properties.force_inactive.filetypes = {
 }
 
 properties.force_inactive.buftypes = {
-	'terminal'
-}
-
-components.left.active[1] = {
-	provider = '▊ ',
-	hl = {
-		fg = 'skyblue'
-	}
-}
-
-components.left.active[2] = {
-	provider = 'vi_mode',
-	icon = '',
-	left_sep = {
-		str = ' ',
-		hl = {
-			fg = 'green',
-			bg = 'black'
-		}
-	},
-	hl = function()
-		local val = {}
-		val.name = vi_mode_utils.get_vim_mode()
-		val.fg = vi_mode_utils.get_mode_color()
-		val.style = 'bold'
-		return val
-	end,
-}
-
-components.left.active[3] = {
-	provider = 'file_info',
-	hl = {
-		fg = 'white',
-		bg = 'oceanblue',
-		style = 'bold'
-	},
-	left_sep = {
-		' ', 'slant_left_2',
-		{str = ' ', hl = {bg = 'oceanblue', fg = 'NONE'}}
-	},
-	right_sep = {'slant_right_2', ' '}
-}
-
-components.left.active[4] = {
-	provider = 'file_size',
-	enabled = function() return fn.getfsize(fn.expand('%:p')) > 0 end,
-	right_sep = {
-		' ',
-		{
-			str = 'slant_left_2_thin',
-			hl = {
-				fg = 'fg',
-				bg = 'bg'
-			}
-		},
-	}
-}
-
-components.left.active[5] = {
-	provider = 'position',
-	left_sep = ' ',
-	right_sep = {
-		' ',
-		{
-			str = 'slant_right_2_thin',
-			hl = {
-				fg = 'fg',
-				bg = 'bg'
-			}
-		}
-	}
-}
-
-components.left.active[6] = {
-	provider = 'diagnostic_errors',
-	enabled = function() return lsp.diagnostics_exist('Error') end,
-	hl = { fg = 'red' }
-}
-
-components.left.active[7] = {
-	provider = 'diagnostic_warnings',
-	enabled = function() return lsp.diagnostics_exist('Warning') end,
-	hl = { fg = 'yellow' }
-}
-
-components.left.active[8] = {
-	provider = 'diagnostic_hints',
-	enabled = function() return lsp.diagnostics_exist('Hint') end,
-	hl = { fg = 'cyan' }
-}
-
-components.left.active[9] = {
-	provider = 'diagnostic_info',
-	enabled = function() return lsp.diagnostics_exist('Information') end,
-	hl = { fg = 'skyblue' }
-}
-
-components.right.active[1] = {
-	provider = 'file_encoding',
-	left_sep = {
-		str = '  ',
-		hl = {
-			fg = 'white',
-			bg = 'black'
-		}
-	},
-}
-
-components.right.active[2] = {
-	provider = 'battery',
-	left_sep = {
-		str = '  ',
-		hl = {
-			fg = 'white',
-			bg = 'black'
-		}
-	},
-}
-
-components.right.active[3] = {
-	provider = 'git_branch',
-	enabled = function() return git_branch({}) ~= '' end,
-	hl = {
-		fg = 'white',
-		bg = 'black',
-		style = 'bold'
-	},
-	left_sep = {
-		str = '  ',
-		hl = {
-			fg = 'white',
-			bg = 'black'
-		}
-	},
-}
-
-components.right.active[4] = {
-	provider = 'git_diff_added',
-	enabled = function() return git_branch({}) ~= '' end,
-	hl = {
-		fg = 'green',
-		bg = 'black'
-	},
-	left_sep = {
-		str = '  ',
-		hl = {
-			fg = 'white',
-			bg = 'black'
-		}
-	},
-}
-
-components.right.active[5] = {
-	provider = 'git_diff_changed',
-	hl = {
-		fg = 'orange',
-		bg = 'black'
-	}
-}
-
-components.right.active[6] = {
-	provider = 'git_diff_removed',
-	hl = {
-		fg = 'red',
-		bg = 'black'
-	},
-}
-
-components.right.active[7] = {
-	provider = 'line_percentage',
-	hl = {
-		style = 'bold'
-	},
-	left_sep = {
-		str = '  ',
-		hl = {
-			fg = 'white',
-			bg = 'black'
-		}
-	},
-	right_sep = ' '
-}
-
-components.right.active[8] = {
-	provider = 'scroll_bar',
-	hl = {
-		fg = 'skyblue',
-		style = 'bold'
-	}
-}
-
-components.left.inactive[1] = {
-	provider = 'file_type',
-	hl = {
-		fg = 'white',
-		bg = 'oceanblue',
-		style = 'bold'
-	},
-	left_sep = {
-		str = ' ',
-		hl = {
-			fg = 'NONE',
-			bg = 'oceanblue'
-		}
-	},
-	right_sep = {
-		{
-			str = ' ',
-			hl = {
-				fg = 'NONE',
-				bg = 'oceanblue'
-			}
-		},
-		'slant_right'
-	}
+	'terminal',
 }
 
 -- This table is equal to the default colors table
