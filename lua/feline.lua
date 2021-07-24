@@ -156,7 +156,7 @@ components.right.active[2] = {
 		}
 	},
 }
-print(vim.inspect(git_branch({})))
+
 components.right.active[3] = {
 	provider = 'git_branch',
 	enabled = function() return git_branch({}) ~= '' end,
