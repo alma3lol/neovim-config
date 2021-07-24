@@ -80,4 +80,8 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'akinsho/nvim-toggleterm.lua'
 Plug 'ray-x/aurora'
 Plug 'nvim-lua/lsp-status.nvim'
+Plug 'folke/lsp-colors.nvim'
+Plug 'folke/trouble.nvim'
+Plug 'Shadorain/shadotheme'
+Plug 'jbyuki/instant.nvim'
 call plug#end()

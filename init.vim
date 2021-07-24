@@ -73,6 +73,7 @@ set hidden
 
 so $VIMRUNTIME/plugin/rplugin.vim
 so $CWD/plugins.vim
+let g:instant_username = "Alma3lol"
 
 autocmd VimEnter * PlugClean! | PlugUpdate --sync | close
 
@@ -123,6 +124,7 @@ so $CWD/syntastic.vim
 so $CWD/telescope.vim
 luafile $CWD/lua/telescope.lua
 luafile $CWD/lua/treesitter.lua
+luafile $CWD/lua/trouble.lua
 luafile $CWD/lua/toggleterm.lua
 so $CWD/vsnips.vim
 
