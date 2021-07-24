@@ -97,7 +97,7 @@ colorscheme aurora
 let g:dashboard_default_executive = 'telescope'
 let g:dap_virtual_text = v:true
 lua require'terminal'.setup()
-lua require("dapui").setup()
+lua require("dapui").setup({})
 
 " so $CWD/airline.vim
 so $CWD/bindings.vim
