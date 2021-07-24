@@ -27,6 +27,8 @@ if !filereadable(expand("$vimPlugPath"))
     so $vimPlugPath
 endif
 
+autocmd VimEnter * PlugClean! | PlugUpdate --sync | close
+
 set completeopt=menuone,noselect
 set ff=unix
 set mouse=a
@@ -74,8 +76,6 @@ set hidden
 so $VIMRUNTIME/plugin/rplugin.vim
 so $CWD/plugins.vim
 let g:instant_username = "Alma3lol"
-
-autocmd VimEnter * PlugClean! | PlugUpdate --sync | close
 
 if !isdirectory(expand("$CWD/vscode-firefox-debug"))
     echo "Installing vscode-firefox-debug..."
