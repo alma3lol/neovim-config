@@ -1,6 +1,5 @@
 syntax on
 let $CWD=expand("<sfile>:p:h")
-let $undoDir=stdpath('data')."/undodir"
 
 """""""""""""""""""""""""""""""""""""""""""
 " This section is for installing vim-plug "
@@ -62,15 +61,18 @@ set list
 set listchars=tab:>\ ,trail:*,extends:#,nbsp:.
 set number
 set encoding=utf-8
-set hlsearch
 set incsearch
 set ignorecase
 set smartcase
 set viminfo='100,<9999,s100
 set noswapfile
 set nobackup
-set undodir=$undoDir
+set undodir=$CWD/undodir//
+set backupdir=$CWD/backup//
+set directory=$CWD/directory//
 set undofile
+set swapfile
+set backup
 set smartindent
 set termguicolors
 set guicursor=
