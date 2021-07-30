@@ -1,4 +1,7 @@
 undodir
+backupdir
+directory
+undodir
 plugged
 ctags
 vscode-firefox-debug
