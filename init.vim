@@ -1,6 +1,10 @@
 syntax on
 let $CWD=expand("<sfile>:p:h")
 
+if !isdirectory(expand("$CWD/backup"))
+    silent call system(expand("mkdir $CWD/backup")) | redraw!
+endif
+
 """""""""""""""""""""""""""""""""""""""""""
 " This section is for installing vim-plug "
 """""""""""""""""""""""""""""""""""""""""""
