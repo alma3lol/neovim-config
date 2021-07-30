@@ -123,12 +123,12 @@ nnoremap <leader>qq :call QuickFixToggle()<CR>
 
 nnoremap <leader>1 :bN<CR>
 nnoremap <leader>2 :bn<CR>
-nnoremap <leader>3 #
-nnoremap <leader>4 $
-nnoremap <leader>5 %
-nnoremap <leader>6 ^
-nnoremap <leader>7 &
-nnoremap <leader>8 *
+nmap <leader>3 #
+nmap <leader>4 $
+nmap <leader>5 %
+nmap <leader>6 ^
+nmap <leader>7 &
+nmap <leader>8 *
 nnoremap <leader><leader>1 :q<CR>
 nnoremap <leader><leader>2 :e $CWD/init.vim<CR>
 nnoremap <leader><leader>5 :so $CWD/init.vim<CR>
