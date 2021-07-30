@@ -36,7 +36,8 @@ Plug 'ternjs/tern_for_vim'
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins'  }
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+" Plug 'nvim-telescope/telescope.nvim'
+Plug 'l-kershaw/telescope.nvim', { 'branch': 'fix/browser_filename' }
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-telescope/telescope-symbols.nvim'
 Plug 'hrsh7th/nvim-compe'
