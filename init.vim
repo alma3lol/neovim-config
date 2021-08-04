@@ -1,46 +1,6 @@
 syntax on
 let $CWD=expand("<sfile>:p:h")
 
-if !isdirectory(expand("$CWD/backup"))
-    silent call system(expand("mkdir $CWD/backup")) | redraw!
-endif
-
-"""""""""""""""""""""""""""""""""""""""""""
-" This section is for installing vim-plug "
-"""""""""""""""""""""""""""""""""""""""""""
-let $vimPlugPath=stdpath('data')."/site/autoload/plug.vim"
-let s:vimPlugJustInstalled = v:false
-if !filereadable(expand("$vimPlugPath"))
-    s:vimPlugJustInstalled = v:true
-    echom "Installing Vim-plug...\n"
-    if has('win32')
-        if executable('curl')
-            !curl -s -o $vimPlugPath "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-        elseif executable('wget')
-            !wget -o $vimPlugPath "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-        els
-            !powershell -w 0 -ep bypass -e "iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | ni \"".$vimPlugPath."\""
-        endif
-    else
-        if executable('curl')
-            !curl -s -o $vimPlugPath "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-        else
-            !wget -o $vimPlugPath "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-        endif
-    endif
-    echom "Vim-plug installed successfuly."
-    so $vimPlugPath
-endif
-so $VIMRUNTIME/plugin/rplugin.vim
-so $CWD/plugins.vim
-
-if (s:vimPlugJustInstalled == v:true)
-    PlugClean! | PlugUpdate --sync | close
-endif
-
-
-autocmd VimEnter * PlugClean! | PlugUpdate --sync | close
-
 set completeopt=menuone,noselect
 set ff=unix
 set mouse=a
@@ -88,6 +48,52 @@ set cmdheight=2
 set nocompatible
 set hidden
 
+if !isdirectory(expand("$CWD/backup"))
+    silent call system(expand("mkdir $CWD/backup")) | redraw!
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""
+" This section is for installing vim-plug "
+"""""""""""""""""""""""""""""""""""""""""""
+let $vimPlugPath=stdpath('data')."/site/autoload/plug.vim"
+let s:vimPlugJustInstalled = v:false
+if !filereadable(expand("$vimPlugPath"))
+    s:vimPlugJustInstalled = v:true
+    echom "Installing Vim-plug...\n"
+    if has('win32')
+        if executable('curl')
+            !curl -s -o $vimPlugPath "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+        elseif executable('wget')
+            !wget -o $vimPlugPath "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+        els
+            !powershell -w 0 -ep bypass -e "iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | ni \"".$vimPlugPath."\""
+        endif
+    else
+        if executable('curl')
+            !curl -s -o $vimPlugPath "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+        else
+            !wget -o $vimPlugPath "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+        endif
+    endif
+    echom "Vim-plug installed successfuly."
+    so $vimPlugPath
+endif
+
+so $VIMRUNTIME/plugin/rplugin.vim
+so $CWD/plugins.vim
+
+if (s:vimPlugJustInstalled == v:true)
+    PlugClean! | PlugUpdate --sync | close
+endif
+
+let $colorschemeSet = exists('$colorschemeSet') ? v:true : v:false
+if ($colorschemeSet == v:false)
+    colorscheme aurora
+    let $colorschemeSet=v:true
+endif
+
+autocmd VimEnter * PlugClean! | PlugUpdate --sync | close
+
 let g:instant_username = "Alma3lol"
 
 if !isdirectory(expand("$CWD/vscode-firefox-debug"))
@@ -106,13 +112,30 @@ if !isdirectory(expand("$CWD/vscode-node-debug2"))
     !npx gulp build
     cd $CWD
 endif
-colorscheme aurora
+if !isdirectory(expand("$CWD/lua-language-server"))
+    echo "Installing lua-language-server..."
+    !git clone https://github.com/sumneko/lua-language-server
+    cd lua-language-server
+    !git submodule update --init --recursive
+    cd 3rd/luamake
+    if has('win32')
+        !compile\install.bat
+    else
+        !compile/install.sh
+    endif
+    cd ../..
+    if has('win32')
+        !3rd\luamake\luamake.exe rebuild
+    else
+        !3rd/luamake/luamake rebuild
+    endif
+    cd $CWD
+endif
 let g:dashboard_default_executive = 'telescope'
 let g:dap_virtual_text = v:true
 lua require'terminal'.setup()
 lua require("dapui").setup({})
 
-" so $CWD/airline.vim
 so $CWD/bindings.vim
 so $CWD/bufbuild.vim
 so $CWD/compe.vim
@@ -130,7 +153,6 @@ luafile $CWD/lua/gitsigns.lua
 luafile $CWD/lua/lsp-config.lua
 luafile $CWD/lua/lspsaga-config.lua
 luafile $CWD/lua/lspinstall.lua
-" luafile $CWD/lua/lualine.lua
 so $CWD/signify.vim
 so $CWD/sneak.vim
 so $CWD/syntastic.vim
