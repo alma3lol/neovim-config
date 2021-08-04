@@ -39,6 +39,13 @@ require('bufferline').setup {
 			end
 			return s
 		end,
+        -- NOTE: this will be called a lot so don't do any heavy processing here
+        custom_filter = function(buf_number)
+            -- filter out filetypes you don't want to see
+            if vim.bo[buf_number].filetype ~= "dap-repl" then
+                return true
+            end
+        end,
 		offsets = {
 			{filetype = "nerdtree", text = "File Explorer", highlight = "Directory", text_align = "center"},
 		},
