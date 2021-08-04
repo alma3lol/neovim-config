@@ -149,13 +149,9 @@ nnoremap <leader>fds :Telescope lsp_document_symbols<CR>
 nnoremap <leader>fws :Telescope lsp_workspace_symbols<CR>
 nnoremap <leader>bb :Telescope buffers<CR>
 nnoremap <leader>cs :Telescope colorscheme<CR>
-nnoremap <leader>cw :Windows<CR>
-
 nnoremap <leader><leader>p :Telescope project<CR>
-
 nnoremap <leader>sa :wa<CR>
 nnoremap <leader>ss :Startify<CR>
-
 nnoremap <leader>pp :VsnipOpen<CR>
 nnoremap <leader>nn :NERDTreeToggle<CR>
 
@@ -258,10 +254,8 @@ nnoremap <leader>l :wincmd l<CR>
 nnoremap <leader>mm :MaximizerToggle<CR>
 nnoremap <leader>u :UndotreeToggle<CR>
 
-nnoremap <leader><leader>ww :Windows<CR>
 nnoremap <leader><leader>w= :wincmd =<CR>
 nnoremap <leader>o :on<CR>
-nnoremap <leader>ow :on<CR>
 nnoremap <leader>ot :tabonly<CR>
 
 nnoremap <C-Left> :tabprevious<CR>
@@ -284,7 +278,7 @@ nnoremap <leader>dm :Denite -auto-resize mark<CR>
 nnoremap <leader>do :Denite -auto-resize outline<CR>
 nnoremap <leader>dr :Denite -auto-resize register<CR>
 
-nnoremap <leader>du :lua require("dapui").toggle()<CR>
+nnoremap <silent> <leader>du :lua require("dapui").toggle()<CR>
 nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
 nnoremap <silent> <F10> :lua require'dap'.step_over()<CR>
 nnoremap <silent> <F11> :lua require'dap'.step_into()<CR>
