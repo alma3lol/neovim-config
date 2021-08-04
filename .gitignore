@@ -1,8 +1,9 @@
 undodir
-backupdir
+backup
 directory
 undodir
 plugged
 ctags
 vscode-firefox-debug
 vscode-node-debug2
+lua-language-server
