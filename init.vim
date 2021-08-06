@@ -18,7 +18,6 @@ set scrolloff=5
 set backspace=indent,eol,start
 set ttyfast
 set laststatus=2
-set showmode
 set showcmd
 set matchpairs+=<:>
 set list
@@ -29,8 +28,6 @@ set incsearch
 set ignorecase
 set smartcase
 set viminfo='100,<9999,s100
-set noswapfile
-set nobackup
 set undodir=$CWD/undodir//
 set backupdir=$CWD/backup//
 set directory=$CWD/directory//
@@ -39,7 +36,6 @@ set swapfile
 set backup
 set smartindent
 set termguicolors
-set guicursor=
 set relativenumber
 set nohlsearch
 set scrolloff=8
@@ -55,7 +51,9 @@ endif
 """""""""""""""""""""""""""""""""""""""""""
 " This section is for installing vim-plug "
 """""""""""""""""""""""""""""""""""""""""""
-let $vimPlugPath=stdpath('data')."/site/autoload/plug.vim"
+let $nvimPluginsAutoloadPath=stdpath('data')."/site/autoload"
+call mkdir(expand($nvimPluginsAutoloadPath), "p")
+let $vimPlugPath=$nvimPluginsAutoloadPath."/plug.vim"
 let s:vimPlugJustInstalled = v:false
 if !filereadable(expand("$vimPlugPath"))
     s:vimPlugJustInstalled = v:true
