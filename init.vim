@@ -12,7 +12,7 @@ set noerrorbells
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set expandtab
+set noexpandtab
 set noshiftround
 set scrolloff=5
 set backspace=indent,eol,start
@@ -77,6 +77,7 @@ if !filereadable(expand("$vimPlugPath"))
     so $vimPlugPath
 endif
 
+so $CWD/bindings.vim
 so $VIMRUNTIME/plugin/rplugin.vim
 so $CWD/plugins.vim
 
@@ -98,6 +99,14 @@ if !isdirectory(expand("$CWD/vscode-firefox-debug"))
     echo "Installing vscode-firefox-debug..."
     !git clone https://github.com/firefox-devtools/vscode-firefox-debug.git
     cd vscode-firefox-debug
+    !npm i
+    !npm run build
+    cd $CWD
+endif
+if !isdirectory(expand("$CWD/vscode-chrome-debug"))
+    echo "Installing vscode-chrome-debug..."
+    !git clone https://github.com/microsoft/vscode-chrome-debug.git
+    cd vscode-chrome-debug
     !npm i
     !npm run build
     cd $CWD
@@ -134,12 +143,12 @@ let g:dap_virtual_text = v:true
 lua require'terminal'.setup()
 lua require("dapui").setup({})
 
-so $CWD/bindings.vim
 so $CWD/bufbuild.vim
 so $CWD/compe.vim
 luafile $CWD/lua/bufferline.lua
 luafile $CWD/lua/compe-config.lua
 luafile $CWD/lua/dap-config.lua
+luafile $CWD/lua/dap-ui-config.lua
 so $CWD/denite.vim
 so $CWD/emmet.vim
 so $CWD/whichkey.vim

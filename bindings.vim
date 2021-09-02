@@ -93,6 +93,16 @@ function! GenerateCTagsForCurrentFile()
 endfunction
 
 "
+" All modes bindings
+"
+noremap <leader>3 #
+noremap <leader>4 $
+noremap <leader>5 %
+noremap <leader>6 ^
+noremap <leader>7 &
+noremap <leader>8 *
+
+"
 " Normal mode bindings
 "
 nnoremap <C-e> :Telescope file_browser hidden=true<CR>
@@ -102,7 +112,7 @@ nnoremap <C-k>s :wa<CR>
 nnoremap <C-k>w :bufdo bd<CR>
 
 nnoremap <leader>of :e <C-R>=expand("<cfile>")<CR><CR>
-nnoremap <leader>ocd :Telescope file_browser hidden=true cwd=<C-R>=expand('%:p:h')<CR><CR>
+nnoremap <leader>cd :Telescope file_browser hidden=true cwd=<C-R>=expand('%:p:h')<CR><CR>
 
 nnoremap <leader>rr :lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>:e<CR>
 nnoremap <leader>ii :LspInfo<CR>
@@ -123,18 +133,20 @@ nnoremap <leader>qq :call QuickFixToggle()<CR>
 
 nnoremap <leader>1 :bN<CR>
 nnoremap <leader>2 :bn<CR>
-nmap <leader>3 #
-nmap <leader>4 $
-nmap <leader>5 %
-nmap <leader>6 ^
-nmap <leader>7 &
-nmap <leader>8 *
-nnoremap <leader><leader>1 :q<CR>
-nnoremap <leader><leader>2 :e $CWD/init.vim<CR>
-nnoremap <leader><leader>5 :so $CWD/init.vim<CR>
+nnoremap <leader><leader>q :q<CR>
+nnoremap <leader><leader>1 <CMD>BufferLineGoToBuffer 1<CR>
+nnoremap <leader><leader>2 <CMD>BufferLineGoToBuffer 2<CR>
+nnoremap <leader><leader>3 <CMD>BufferLineGoToBuffer 3<CR>
+nnoremap <leader><leader>4 <CMD>BufferLineGoToBuffer 4<CR>
+nnoremap <leader><leader>5 <CMD>BufferLineGoToBuffer 5<CR>
+nnoremap <leader><leader>6 <CMD>BufferLineGoToBuffer 6<CR>
+nnoremap <leader><leader>7 <CMD>BufferLineGoToBuffer 7<CR>
+nnoremap <leader><leader>8 <CMD>BufferLineGoToBuffer 8<CR>
+nnoremap <leader><leader>9 <CMD>BufferLineGoToBuffer 9<CR>
+nnoremap <leader><leader>sb :so $CWD/bindings.vim<CR>
 
 nnoremap <leader>ft :Telescope filetypes<CR>
-nnoremap <leader>sf :call SourceCurrentFile()<CR>
+nnoremap <silent><leader>sf :call SourceCurrentFile()<CR>
 nnoremap <leader>fw :Telescope grep_string search=<C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>fs :Telescope live_grep<CR>
 nnoremap <leader>fh :Telescope help_tags<CR>
@@ -246,22 +258,15 @@ nnoremap <leader>yt :FloatermNew yarn test<CR>
 nnoremap <leader>yd :FloatermNew yarn debug<CR>
 nnoremap <leader>df :FloatermNew node --inspect %<CR>
 
-nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
-nnoremap <leader>l :wincmd l<CR>
 
 nnoremap <leader>mm :MaximizerToggle<CR>
-nnoremap <leader>u :UndotreeToggle<CR>
+nnoremap <leader>uu :UndotreeToggle<CR>
 
 nnoremap <leader><leader>w= :wincmd =<CR>
-nnoremap <leader>o :on<CR>
+nnoremap <leader>ow :on<CR>
 nnoremap <leader>ot :tabonly<CR>
-
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
-nnoremap <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-nnoremap <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 
 nnoremap <leader><leader>v V
 
@@ -294,10 +299,8 @@ nnoremap <silent> <leader>rl :lua require'dap'.run_last()<CR>
 nnoremap <F2> :set invpaste paste?<CR><CR>
 nnoremap <leader>vp V}
 nnoremap <leader>vb <C-V>}
-nnoremap <C-/> vgc
-nnoremap <leader>/ vgc
-nnoremap <leader> :silent WhichKey '<Space>'<CR>
-nnoremap <leader>sl :call SourceCurrentLine()<CR>
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+nnoremap <silent><leader>sl :call SourceCurrentLine()<CR>
 nnoremap <leader>ca :Lspsaga code_action<CR>
 nnoremap <silent>gs :Lspsaga signature_help<CR>
 nnoremap <silent>gd :Lspsaga lsp_finder<CR>
@@ -317,29 +320,38 @@ nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<cr>
 nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
 nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
 nnoremap gR <cmd>TroubleToggle lsp_references<cr>
+nmap <C-/> vgc
+nmap <leader>/ vgc
+
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+nnoremap <leader>j :m .+1<CR>==
+nnoremap <leader>k :m .-2<CR>==
 
 "
 "
 " Visual mode bindings
 "
-vnoremap <C-/> gc
-vnoremap <leader>/ vgc
-vnoremap <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
-vnoremap <leader>s' S'
-vnoremap <leader>s" S"
-vnoremap <leader>s` S`
-vnoremap <leader>s{ S{
-vnoremap <leader>s[ S[
-vnoremap <leader>s( S(
+vmap <C-/> gc
+vmap <leader>/ vgc
+vnoremap <silent> <leader> :<c-u> :WhichKeyVisual '<Space>'<CR>
+vmap <leader>s' S'
+vmap <leader>s" S"
+vmap <leader>s` S`
+vmap <leader>s{ S{
+vmap <leader>s[ S[
+vmap <leader>s9 S(
 vnoremap <leader>sl :<C-w>call SourceSelectedLines()<CR>
 vnoremap <leader>ca :<C-U>Lspsaga range_code_action<CR>
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 "
 " Insert mode bindings
 "
 inoremap <F2> <C-O>:set invpaste paste?<CR><CR>
-inoremap <leader><leader><Backspace> <Esc>v^c
-inoremap <leader>tt <Esc>:FloatermToggle<CR>
+inoremap <leader><leader><BS> <Esc>v^c
 inoremap <leader><leader>o <Esc>o
 inoremap <leader><leader>no <Esc>O
 inoremap <leader><leader>p <Esc>pa
@@ -350,6 +362,8 @@ inoremap <silent><expr> <C-e>     compe#close('<C-e>')
 inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4  })
 inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4  })
 inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
+inoremap <c-j> <esc>:m .+1<CR>==a
+inoremap <c-k> <esc>:m .-2<CR>==a
 
 "
 " Terminal mode bindings

@@ -29,6 +29,12 @@ require'compe'.setup {
 local t = function(str)
 	return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
+
+local check_back_space = function()
+    local col = vim.fn.col('.') - 1
+    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+end
+
 _G.tab_complete = function()
 	if vim.fn.pumvisible() == 1 then
 		return t "<C-n>"
@@ -40,6 +46,7 @@ _G.tab_complete = function()
 		return vim.fn['compe#complete']()
 	end
 end
+
 _G.s_tab_complete = function()
 	if vim.fn.pumvisible() == 1 then
 		return t "<C-p>"

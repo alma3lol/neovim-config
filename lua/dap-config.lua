@@ -24,7 +24,15 @@ dap.configurations.javascript = {
 		console = 'integratedTerminal',
 	},
 	{
-		name = 'Attach to Process',
+		name = 'Attach to Electron Process',
+		type = 'node2',
+		request = 'attach',
+		restart = true,
+		webRoot = "${workspaceFolder}",
+		port = 5858,
+	},
+	{
+		name = 'Attach to Node Process',
 		type = 'node2',
 		request = 'attach',
 		restart = true,
@@ -33,7 +41,15 @@ dap.configurations.javascript = {
 }
 dap.configurations.typescript = {
 	{
-		name = 'Attach to Process',
+		name = 'Attach to Electron Process',
+		type = 'node2',
+		request = 'attach',
+		restart = true,
+		webRoot = "${workspaceFolder}",
+		port = 5858,
+	},
+	{
+		name = 'Attach to Node Process',
 		type = 'node2',
 		request = 'attach',
 		restart = true,
@@ -51,6 +67,40 @@ dap.configurations.typescript = {
 	}
 }
 dap.configurations.typescriptreact = {
+	{
+		type = "node2",
+		request = "launch",
+		name = "Run Jest Tests",
+		program = "${workspaceFolder}/node_modules/.bin/jest",
+		args = { "--watch" },
+		console = "integratedTerminal",
+		internalConsoleOptions = "neverOpen",
+		disableOptimisticBPs = true,
+		windows = {
+			program = "${workspaceFolder}/node_modules/jest/bin/jest",
+		}
+	},
+	{
+		name = 'Attach to Electron Process',
+		type = 'node2',
+		request = 'attach',
+		restart = true,
+		webRoot = "${workspaceFolder}",
+		port = 9229,
+		localRoot = "${workspaceFolder}",
+		remoteRoot = "${workspaceFolder}"
+	},
+	{
+		name = 'Run Electron-forge Process',
+		type = 'node2',
+		request = 'launch',
+		restart = true,
+		runtimeExecutable = "${workspaceFolder}/node_modules/.bin/electron-forge-vscode-nix",
+		windows = {
+			runtimeExecutable = "${workspaceFolder}/node_modules/.bin/electron-forge-vscode-win.cmd"
+		},
+		cwd = "${workspaceFolder}"
+	},
 	{
 		name = 'Debug using Firefox',
 		type = 'firefox',
