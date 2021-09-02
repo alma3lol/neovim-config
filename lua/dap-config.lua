@@ -12,6 +12,12 @@ dap.adapters.firefox = {
 	args = {vim.env.CWD .. '/vscode-firefox-debug/dist/adapter.bundle.js'},
 }
 
+dap.adapters.chrome = {
+	type = 'executable',
+	command = 'node',
+	args = {vim.env.CWD .. '/vscode-chrome-debug/out/src/chromeDebug.js'},
+}
+
 dap.configurations.javascript = {
 	{
 		name = 'Run File',
@@ -24,31 +30,27 @@ dap.configurations.javascript = {
 		console = 'integratedTerminal',
 	},
 	{
-		name = 'Attach to Electron Process',
-		type = 'node2',
-		request = 'attach',
-		restart = true,
-		webRoot = "${workspaceFolder}",
-		port = 5858,
-	},
-	{
 		name = 'Attach to Node Process',
 		type = 'node2',
 		request = 'attach',
 		restart = true,
 		port = 9229
+	},
+	{
+		name = 'Attach to Electron Process',
+		type = 'chrome',
+		request = 'attach',
+		restart = true,
+		webRoot = "${workspaceFolder}",
+		cwd = "${workspaceFolder}",
+		sourceMaps = true,
+		protocol = "inspector",
+		port = 9222,
+		timeout = 30000,
 	},
 }
 dap.configurations.typescript = {
 	{
-		name = 'Attach to Electron Process',
-		type = 'node2',
-		request = 'attach',
-		restart = true,
-		webRoot = "${workspaceFolder}",
-		port = 5858,
-	},
-	{
 		name = 'Attach to Node Process',
 		type = 'node2',
 		request = 'attach',
@@ -56,50 +58,16 @@ dap.configurations.typescript = {
 		port = 9229
 	},
 	{
-		name = 'Debug using Firefox',
-		type = 'firefox',
-		request = 'attach',
-		reloadOnChange = {
-			watch = { '${workspaceFolder}/**/*.tsx?' },
-			ignore = { '${workspaceFolder}/node_modules/**' },
-		},
-		url = 'http://localhost:3000'
-	}
-}
-dap.configurations.typescriptreact = {
-	{
-		type = "node2",
-		request = "launch",
-		name = "Run Jest Tests",
-		program = "${workspaceFolder}/node_modules/.bin/jest",
-		args = { "--watch" },
-		console = "integratedTerminal",
-		internalConsoleOptions = "neverOpen",
-		disableOptimisticBPs = true,
-		windows = {
-			program = "${workspaceFolder}/node_modules/jest/bin/jest",
-		}
-	},
-	{
 		name = 'Attach to Electron Process',
-		type = 'node2',
+		type = 'chrome',
 		request = 'attach',
 		restart = true,
 		webRoot = "${workspaceFolder}",
-		port = 9229,
-		localRoot = "${workspaceFolder}",
-		remoteRoot = "${workspaceFolder}"
-	},
-	{
-		name = 'Run Electron-forge Process',
-		type = 'node2',
-		request = 'launch',
-		restart = true,
-		runtimeExecutable = "${workspaceFolder}/node_modules/.bin/electron-forge-vscode-nix",
-		windows = {
-			runtimeExecutable = "${workspaceFolder}/node_modules/.bin/electron-forge-vscode-win.cmd"
-		},
-		cwd = "${workspaceFolder}"
+		cwd = "${workspaceFolder}",
+		sourceMaps = true,
+		protocol = "inspector",
+		port = 9222,
+		timeout = 30000,
 	},
 	{
 		name = 'Debug using Firefox',
@@ -110,7 +78,53 @@ dap.configurations.typescriptreact = {
 			ignore = { '${workspaceFolder}/node_modules/**' },
 		},
 		url = 'http://localhost:3000'
-	}
+	},
+	{
+		name = "Run Jest Tests",
+		type = "node2",
+		request = "launch",
+		program = "${workspaceFolder}/node_modules/react-scripts/bin/react-scripts.js",
+		args = { "test" },
+		console = "integratedTerminal",
+		internalConsoleOptions = "neverOpen",
+		disableOptimisticBPs = true,
+		cwd = "${workspaceFolder}"
+	},
+}
+dap.configurations.typescriptreact = {
+	{
+		name = 'Attach to Electron Process',
+		type = 'chrome',
+		request = 'attach',
+		restart = true,
+		webRoot = "${workspaceFolder}",
+		cwd = "${workspaceFolder}",
+		sourceMaps = true,
+		protocol = "inspector",
+		port = 9222,
+		timeout = 30000,
+	},
+	{
+		name = 'Debug using Firefox',
+		type = 'firefox',
+		request = 'attach',
+		reloadOnChange = {
+			watch = { '${workspaceFolder}/**/*.tsx?' },
+			ignore = { '${workspaceFolder}/node_modules/**' },
+		},
+		url = 'http://localhost:3000'
+	},
+	{
+		name = "Run Jest Tests",
+		type = "node2",
+		request = "launch",
+		program = "${workspaceFolder}/node_modules/react-scripts/bin/react-scripts.js",
+		args = { "test" },
+		console = "integratedTerminal",
+		internalConsoleOptions = "neverOpen",
+		disableOptimisticBPs = true,
+		cwd = "${workspaceFolder}"
+	},
 }
 
 vim.fn.sign_define('DapBreakpoint', {text='B', texthl='Error', linehl='', numhl=''})
