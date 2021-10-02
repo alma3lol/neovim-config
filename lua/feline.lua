@@ -14,8 +14,8 @@ local properties = {
 }
 
 local components = {
-	left = {
-		active = {
+	active = {
+		{
 			{
 				provider = '▊ ',
 				hl = {
@@ -110,40 +110,8 @@ local components = {
 				hl = { fg = 'skyblue' }
 			},
 		},
-		inactive = {
-			{
-				provider = 'file_type',
-				hl = {
-					fg = 'white',
-					bg = 'oceanblue',
-					style = 'bold'
-				},
-				left_sep = {
-					str = ' ',
-					hl = {
-						fg = 'NONE',
-						bg = 'oceanblue'
-					}
-				},
-				right_sep = {
-					{
-						str = ' ',
-						hl = {
-							fg = 'NONE',
-							bg = 'oceanblue'
-						}
-					},
-					'slant_right'
-				}
-			},
-		}
-	},
-	mid = {
-		active = {},
-		inactive = {}
-	},
-	right = {
-		active = {
+		{},
+		{
 			{
 				provider = 'file_type',
 			},
@@ -244,8 +212,38 @@ local components = {
 					},
 				},
 			},
+		}
+	},
+	inactive = {
+		{
+			{
+				provider = 'file_type',
+				hl = {
+					fg = 'white',
+					bg = 'oceanblue',
+					style = 'bold'
+				},
+				left_sep = {
+					str = ' ',
+					hl = {
+						fg = 'NONE',
+						bg = 'oceanblue'
+					}
+				},
+				right_sep = {
+					{
+						str = ' ',
+						hl = {
+							fg = 'NONE',
+							bg = 'oceanblue'
+						}
+					},
+					'slant_right'
+				}
+			},
 		},
-		inactive = {
+		{},
+		{
 			{
 				provider = 'battery',
 				hl = {
@@ -274,8 +272,8 @@ local components = {
 					},
 				},
 			},
-		}
-	}
+		},
+	},
 }
 
 properties.force_inactive.filetypes = {
