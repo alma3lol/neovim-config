@@ -160,6 +160,8 @@ luafile $CWD/lua/gitsigns.lua
 luafile $CWD/lua/lsp-config.lua
 luafile $CWD/lua/lspsaga-config.lua
 luafile $CWD/lua/lspinstall.lua
+luafile $CWD/lua/octo.lua
+luafile $CWD/lua/package-info.lua
 so $CWD/signify.vim
 so $CWD/sneak.vim
 so $CWD/syntastic.vim
