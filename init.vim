@@ -128,7 +128,7 @@ if !isdirectory(expand("$CWD/lua-language-server"))
     if has('win32')
         !compile\install.bat
     else
-        !compile/install.sh
+        !bash compile/install.sh
     endif
     cd ../..
     if has('win32')
@@ -139,9 +139,7 @@ if !isdirectory(expand("$CWD/lua-language-server"))
     cd $CWD
 endif
 let g:dashboard_default_executive = 'telescope'
-let g:dap_virtual_text = v:true
 lua require'terminal'.setup()
-lua require("dapui").setup({})
 
 so $CWD/bufbuild.vim
 so $CWD/compe.vim
@@ -149,6 +147,7 @@ luafile $CWD/lua/bufferline.lua
 luafile $CWD/lua/compe-config.lua
 luafile $CWD/lua/dap-config.lua
 luafile $CWD/lua/dap-ui-config.lua
+luafile $CWD/lua/dap-virtual-text.lua
 so $CWD/denite.vim
 so $CWD/emmet.vim
 so $CWD/whichkey.vim
