@@ -30,29 +30,35 @@ elseif vim.fn.has('mac') == 1 then
     lua_bin = vim.fn.expand("$CWD/lua-language-server/bin/macOS/lua-language-server")
 end
 
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
+
 nvim_lsp.sumneko_lua.setup {
-    cmd = { lua_bin, "-E", vim.fn.expand("$CWD/lua-language-server/main.lua") },
-    settings = {
-        Lua = {
-            runtime = {
-                version = 'LuaJIT',
-                path = vim.split(package.path, ';')
-            },
-            diagnostics = {
-                globals = {'vim'}
-            },
-            workspace = {
-                library = {[vim.fn.expand('$VIMRUNTIME/lua')] = true, [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true},
-                maxPreload = 2000,
-                checkThirdParty = false,
-            }
-        }
+  cmd = { lua_bin, "-E", vim.fn.expand("$CWD/lua-language-server/main.lua") },
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT',
+        path = runtime_path,
+      },
+      diagnostics = {
+        globals = {'vim'}
+      },
+      workspace = {
+        library = {[vim.fn.expand('$VIMRUNTIME/lua')] = true, [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true},
+        maxPreload = 2000,
+        checkThirdParty = false,
+      },
+      telemetry = {
+        enable = false
+      }
     }
+  }
 }
 
 nvim_lsp.jsonls.setup {
   cmd = {"vscode-json-languageserver", "--stdio"},
-  on_attach = on_attach,
   capabilities = capabilities,
   filetypes = {"json", "jsonc"},
   settings = {
