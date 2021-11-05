@@ -1,6 +1,7 @@
 local lsp = require('feline.providers.lsp')
 local vi_mode_utils = require('feline.providers.vi_mode')
 local git_branch = require('feline.providers.git').git_branch
+local package = require("package-info")
 
 local b = vim.b
 local fn = vim.fn
@@ -88,6 +89,16 @@ local components = {
 				hl = {
 					fg = '#e0af68'
 				}
+			},
+			{
+				provider = function()
+					return package.get_status()
+					end,
+				hl = {
+					style = "bold",
+				},
+				left_sep = "  ",
+				right_sep = " ",
 			},
 			{
 				provider = 'diagnostic_errors',
