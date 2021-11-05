@@ -1,6 +1,6 @@
 local providers = require('feline.providers')
 
-providers.add_provider('battery', function()
+providers['battery'] = function()
     local backend = vim.fn['battery#backend']()
     local value = backend.value
     local is_charging = backend.is_charging
@@ -42,9 +42,9 @@ providers.add_provider('battery', function()
         icon = ' '
     end
 	return icon .. tostring(value)
-end)
+end
 
-providers.add_provider('os_type', function ()
+providers['os_type'] = function ()
 	local os = vim.bo.fileformat:upper()
     local icon
     if os == 'UNIX' then
@@ -55,4 +55,4 @@ providers.add_provider('os_type', function ()
         icon = '   '
     end
     return icon
-end)
+end
