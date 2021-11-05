@@ -158,7 +158,6 @@ nnoremap <leader>fb :Telescope buffers<CR>
 nnoremap <leader>fr :Telescope lsp_references<CR>
 nnoremap <leader>fds :Telescope lsp_document_symbols<CR>
 nnoremap <leader>fws :Telescope lsp_workspace_symbols<CR>
-nnoremap <leader>bb :Telescope buffers<CR>
 nnoremap <leader>cs :Telescope colorscheme<CR>
 nnoremap <leader><leader>p :Telescope project<CR>
 nnoremap <leader>sa :wa<CR>
@@ -312,7 +311,7 @@ nnoremap <silent> <leader>sd :Lspsaga show_line_diagnostics<CR>
 nnoremap <silent> [d :Lspsaga diagnostic_jump_next<CR>
 nnoremap <silent> ]d :Lspsaga diagnostic_jump_prev<CR>
 nnoremap <silent> <A-d> :Lspsaga open_floaterm<CR>
-nnoremap <silent> <leader>gb :BufferLinePick<CR>
+nnoremap <silent> <leader>bb :BufferLinePick<CR>
 nnoremap <silent> <c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
 nnoremap <leader>xx <cmd>TroubleToggle<cr>
 nnoremap <leader>xw <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
