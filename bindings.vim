@@ -105,9 +105,8 @@ noremap <leader>8 *
 "
 " Normal mode bindings
 "
-nnoremap <C-e> :Telescope file_browser hidden=true<CR>
-nnoremap <C-h> :SidewaysLeft<CR>
-nnoremap <C-l> :SidewaysRight<CR>
+nnoremap <M-h> :SidewaysLeft<CR>
+nnoremap <M-l> :SidewaysRight<CR>
 nnoremap <C-k>s :wa<CR>
 nnoremap <C-k>w :bufdo bd<CR>
 
@@ -176,6 +175,7 @@ nnoremap <leader><leader>m3 m3
 nnoremap <leader>m4 `4
 nnoremap <leader><leader>m4 m4
 
+nnoremap <leader>gg :G<CR>
 nnoremap <leader>gf :Telescope git_files<CR>
 nnoremap gb :Git blame<CR>
 nnoremap <leader>gy ggyG<CR>
@@ -300,20 +300,20 @@ nnoremap <F2> :set invpaste paste?<CR><CR>
 nnoremap <leader>vp V}
 nnoremap <leader>vb <C-V>}
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
-nnoremap <silent><leader>sl :call SourceCurrentLine()<CR>
-nnoremap <leader>ca :Lspsaga code_action<CR>
-nnoremap <silent>gs :Lspsaga signature_help<CR>
-nnoremap <silent>gd :Lspsaga lsp_finder<CR>
-nnoremap <silent><C-f> <cmd>lua require('lspsaga.hover').smart_scroll_hover(1)<CR>
-nnoremap <silent><C-b> <cmd>lua require('lspsaga.hover').smart_scroll_hover(-1)<CR>
-nnoremap <silent><leader>rn :Lspsaga rename<CR>
-nnoremap <silent><leader>pd :Lspsaga preview_definition<CR>
-nnoremap <silent><leader>sd :Lspsaga show_line_diagnostics<CR>
-nnoremap <silent>[d :Lspsaga diagnostic_jump_next<CR>
-nnoremap <silent>]d :Lspsaga diagnostic_jump_prev<CR>
-nnoremap <silent><A-d> :Lspsaga open_floaterm<CR>
-nnoremap <silent><leader>gb :BufferLinePick<CR>
-nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+nnoremap <silent> <leader>sl :call SourceCurrentLine()<CR>
+nnoremap <leader> ca :Lspsaga code_action<CR>
+nnoremap <silent> gs :Lspsaga signature_help<CR>
+nnoremap <silent> gd :Lspsaga lsp_finder<CR>
+nnoremap <silent> <C-f> <cmd>lua require('lspsaga.hover').smart_scroll_hover(1)<CR>
+nnoremap <silent> <C-b> <cmd>lua require('lspsaga.hover').smart_scroll_hover(-1)<CR>
+nnoremap <silent> <leader>rn :Lspsaga rename<CR>
+nnoremap <silent> <leader>pd :Lspsaga preview_definition<CR>
+nnoremap <silent> <leader>sd :Lspsaga show_line_diagnostics<CR>
+nnoremap <silent> [d :Lspsaga diagnostic_jump_next<CR>
+nnoremap <silent> ]d :Lspsaga diagnostic_jump_prev<CR>
+nnoremap <silent> <A-d> :Lspsaga open_floaterm<CR>
+nnoremap <silent> <leader>gb :BufferLinePick<CR>
+nnoremap <silent> <c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
 nnoremap <leader>xx <cmd>TroubleToggle<cr>
 nnoremap <leader>xw <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
 nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<cr>
@@ -328,6 +328,42 @@ nnoremap N Nzzzv
 
 nnoremap <leader>j :m .+1<CR>==
 nnoremap <leader>k :m .-2<CR>==
+
+" Show package versions
+noremap <silent> <leader>ns :lua require('package-info').show()<CR>
+
+" Hide package versions
+noremap <silent> <leader>nc :lua require('package-info').hide()<CR>
+
+" Update package on line
+noremap <silent> <leader>nu :lua require('package-info').update()<CR>
+
+" Delete package on line
+noremap <silent> <leader>nd :lua require('package-info').delete()<CR>
+
+" Install a new package
+noremap <silent> <leader>ni :lua require('package-info').install()<CR>
+
+" Reinstall dependencies
+noremap <silent> <leader>nr :lua require('package-info').reinstall()<CR>
+
+" Install a different package version
+noremap <silent> <leader>np :lua require('package-info').change_version()<CR>
+
+nnoremap <leader>to :SymbolsOutline<CR>
+
+nnoremap <leader>ha :lua require("harpoon.mark").add_file()<CR>
+nnoremap <leader>hh :lua require("harpoon.ui").toggle_quick_menu()<CR>
+nnoremap <leader>hw :lua require("harpoon.cmd-ui").toggle_quick_menu()<CR>
+
+nnoremap <leader>h1 :lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap <leader>h2 :lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap <leader>h3 :lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap <leader>h4 :lua require("harpoon.ui").nav_file(4)<CR>
+nnoremap <leader>tu :lua require("harpoon.term").gotoTerminal(1)<CR>
+nnoremap <leader>te :lua require("harpoon.term").gotoTerminal(2)<CR>
+nnoremap <leader>cu :lua require("harpoon.term").sendCommand(1, 1)<CR>
+nnoremap <leader>ce :lua require("harpoon.term").sendCommand(1, 2)<CR>
 
 "
 "
