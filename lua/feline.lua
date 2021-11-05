@@ -3,7 +3,6 @@ local vi_mode_utils = require('feline.providers.vi_mode')
 local git_branch = require('feline.providers.git').git_branch
 local package = require("package-info")
 
-local b = vim.b
 local fn = vim.fn
 
 local properties = {
