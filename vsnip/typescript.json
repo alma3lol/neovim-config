@@ -488,5 +488,29 @@
 			"\t}",
 			"}"
 		]
+	},
+	"ded": {
+		"prefix": "ded",
+		"description": "Disable eslint react-hooks/exhaustive-deps",
+		"body": "// eslint-disable-next-line react-hooks/exhaustive-deps"
+	},
+	"ue": {
+		"prefix": "ue",
+		"description": "React's useEffect",
+		"body": [
+			"useEffect(() => {",
+			"\t$0",
+			"}, [$1]);"
+		]
+	},
+	"us": {
+		"prefix": "us",
+		"description": "React's useState",
+		"body": "const [$3, set${3/(.*)/${3:/capitalize}/}] = useState<$2>($1);"
+	},
+	"usn": {
+		"prefix": "usn",
+		"description": "React's useState with null possibility",
+		"body": "const [$3, set${3/(.*)/${3:/capitalize}/}] = useState<$2 | null>(${1:null});"
 	}
 }
