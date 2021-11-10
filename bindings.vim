@@ -300,7 +300,7 @@ nnoremap <leader>vp V}
 nnoremap <leader>vb <C-V>}
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 nnoremap <silent> <leader>sl :call SourceCurrentLine()<CR>
-nnoremap <leader> ca :Lspsaga code_action<CR>
+nnoremap <silent> <leader>ca :Lspsaga code_action<CR>
 nnoremap <silent> gs :Lspsaga signature_help<CR>
 nnoremap <silent> gd :Lspsaga lsp_finder<CR>
 nnoremap <silent> <C-f> <cmd>lua require('lspsaga.hover').smart_scroll_hover(1)<CR>
@@ -314,7 +314,6 @@ nnoremap <silent> <A-d> :Lspsaga open_floaterm<CR>
 nnoremap <silent> <leader>bb :BufferLinePick<CR>
 nnoremap <silent> <c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
 nnoremap <leader>xx <cmd>TroubleToggle<cr>
-nnoremap <leader>xw <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
 nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<cr>
 nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
 nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
