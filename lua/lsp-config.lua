@@ -59,12 +59,15 @@ nvim_lsp.sumneko_lua.setup {
 
 nvim_lsp.jsonls.setup {
   cmd = {"vscode-json-languageserver", "--stdio"},
-  capabilities = capabilities,
   filetypes = {"json", "jsonc"},
   settings = {
     json = {
       -- Schemas https://www.schemastore.org
       schemas = {
+        {
+          fileMatch = {"typescript.json", "typescriptreact.json"},
+          url = "https://raw.githubusercontent.com/Yash-Singh1/vscode-snippets-json-schema/main/schema.json"
+        },
         {
           fileMatch = {"package.json"},
           url = "https://json.schemastore.org/package.json"
