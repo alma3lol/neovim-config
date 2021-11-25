@@ -172,6 +172,7 @@ luafile $CWD/lua/toggleterm.lua
 so $CWD/vsnips.vim
 
 highlight link LspSagaFinderSelection Search
+let test#strategy = "dispatch"
 
 augroup LuaHighlight
     au!
@@ -181,3 +182,5 @@ augroup LuaHighlight
                 \ on_macro = true
                 \ }
 augroup END
+
+autocmd vimEnter * hi Normal guibg=NONE ctermbg=NONE
