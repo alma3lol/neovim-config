@@ -18,6 +18,12 @@ dap.adapters.chrome = {
 	args = {vim.env.CWD .. '/vscode-chrome-debug/out/src/chromeDebug.js'},
 }
 
+dap.adapters.python3 = {
+	type = 'executable',
+	command = 'python3',
+	args = { '-m', 'debugpy.adapter' };
+}
+
 dap.configurations.javascript = {
 	{
 		name = 'Run File',
@@ -125,6 +131,19 @@ dap.configurations.typescriptreact = {
 		disableOptimisticBPs = true,
 		cwd = "${workspaceFolder}"
 	},
+}
+
+dap.configurations.python = {
+	{
+		name = "Run file (Python3)",
+		type = "python3",
+		request = "launch",
+		program = "${file}",
+		console = "integratedTerminal",
+		internalConsoleOptions = "neverOpen",
+		disableOptimisticBPs = true,
+		cwd = "${workspaceFolder}"
+	}
 }
 
 vim.fn.sign_define('DapBreakpoint', {text='B', texthl='Error', linehl='', numhl=''})
