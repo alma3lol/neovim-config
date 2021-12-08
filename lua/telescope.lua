@@ -43,6 +43,16 @@ require('telescope').setup {
         media_files = {
             filetypes = {"png", "webp", "jpg", "jpeg", "mp4", "webm", "pdf"},
             find_cmd = "rg"
+        },
+        frecency = {
+            show_scores = true,
+            show_unindexed = true,
+            ignore_patterns = {"*.git/*", "*/tmp/*"},
+            disable_devicons = false,
+            workspaces = {
+                ["conf"] = vim.env.CWD,
+                ["captiveportal"] = "/root/github"
+            }
         }
     }
 }
@@ -54,3 +64,5 @@ require('telescope').load_extension('project')
 require('telescope').load_extension('lsp_handlers')
 require("telescope").load_extension("emoji")
 require("telescope").load_extension("tmux")
+require("telescope").load_extension("frecency");
+require('telescope').load_extension('neoclip');
