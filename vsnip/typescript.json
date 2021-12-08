@@ -506,11 +506,35 @@
 	"us": {
 		"prefix": "us",
 		"description": "React's useState",
-		"body": "const [$3, set${3/(.*)/${3:/capitalize}/}] = useState<$2>($1);"
+		"body": "const [$3, set$4${3/(.*)/${3:/capitalize}/}] = useState<$2>($1);"
 	},
 	"usn": {
 		"prefix": "usn",
 		"description": "React's useState with null possibility",
-		"body": "const [$3, set${3/(.*)/${3:/capitalize}/}] = useState<$2 | null>(${1:null});"
+		"body": "const [$3, set$4${3/(.*)/${3:/capitalize}/}] = useState<$2 | null>(${1:null});"
+	},
+	"imp": {
+		"prefix": "imp",
+		"description": "",
+		"body": "import { $0 } from \"$1\";"
+	},
+	"impd": {
+		"prefix": "impd",
+		"description": "",
+		"body": "import $0 from \"$1\";"
+	},
+	"test": {
+		"prefix": "test",
+		"description": "Add a new jest test",
+		"body": [
+			"test('$1', () => {",
+			"\t$0",
+			"});"
+		]
+	},
+	"af": {
+		"prefix": "af",
+		"description": "Create an arrow function",
+		"body": "($1) => {$0}"
 	}
 }
