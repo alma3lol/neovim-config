@@ -145,6 +145,7 @@ so $CWD/bufbuild.vim
 so $CWD/compe.vim
 luafile $CWD/lua/bufferline.lua
 luafile $CWD/lua/compe-config.lua
+luafile $CWD/lua/neoclip.lua
 luafile $CWD/lua/dap-config.lua
 luafile $CWD/lua/dap-ui-config.lua
 luafile $CWD/lua/dap-virtual-text.lua
@@ -156,6 +157,7 @@ luafile $CWD/lua/feline-providers.lua
 luafile $CWD/lua/feline.lua
 luafile $CWD/lua/functions.lua
 luafile $CWD/lua/gitsigns.lua
+luafile $CWD/lua/gps.lua
 luafile $CWD/lua/lsp-config.lua
 luafile $CWD/lua/lspsaga-config.lua
 luafile $CWD/lua/lspinstall.lua
@@ -167,9 +169,12 @@ so $CWD/syntastic.vim
 so $CWD/telescope.vim
 luafile $CWD/lua/telescope.lua
 luafile $CWD/lua/treesitter.lua
+luafile $CWD/lua/treesitter-context.lua
 luafile $CWD/lua/trouble.lua
 luafile $CWD/lua/toggleterm.lua
+luafile $CWD/lua/twilight.lua
 so $CWD/vsnips.vim
+luafile $CWD/lua/zenmode.lua
 
 highlight link LspSagaFinderSelection Search
 let test#strategy = "dispatch"
