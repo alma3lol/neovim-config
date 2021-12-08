@@ -41,11 +41,11 @@ providers['battery'] = function()
     if (is_charging == 1) then
         icon = ' '
     end
-	return icon .. tostring(value)
+    return icon .. tostring(value)
 end
 
 providers['os_type'] = function ()
-	local os = vim.bo.fileformat:upper()
+    local os = vim.bo.fileformat:upper()
     local icon
     if os == 'UNIX' then
         icon = '  '

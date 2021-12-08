@@ -2,6 +2,7 @@ local lsp = require('feline.providers.lsp')
 local vi_mode_utils = require('feline.providers.vi_mode')
 local git_branch = require('feline.providers.git').git_branch
 local package = require("package-info")
+local gps = require("nvim-gps")
 
 local fn = vim.fn
 
@@ -71,7 +72,6 @@ local components = {
 				provider = 'position',
 				left_sep = ' ',
 				right_sep = {
-					' ',
 					{
 						str = 'slant_right_2_thin',
 						hl = {
@@ -83,16 +83,25 @@ local components = {
 			},
 			{
 				provider = 'lsp_client_names',
-				left_sep = '  ',
-				icon = ' ',
+				left_sep = ' ',
+				icon = '   ',
 				hl = {
 					fg = '#e0af68'
-				}
+				},
+				right_sep = ' ',
+			},
+			{
+				provider = function ()
+					return gps.get_location()
+				end,
+				enabled = function ()
+					return gps.is_available()
+				end
 			},
 			{
 				provider = function()
 					return package.get_status()
-					end,
+				end,
 				hl = {
 					style = "bold",
 				},
