@@ -51,7 +51,7 @@ require('telescope').setup {
             disable_devicons = false,
             workspaces = {
                 ["conf"] = vim.env.CWD,
-                ["captiveportal"] = "/root/github"
+                ["work"] = vim.env.WORK
             }
         }
     }
