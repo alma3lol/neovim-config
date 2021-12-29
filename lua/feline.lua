@@ -115,7 +115,7 @@ local components = {
 			},
 			{
 				provider = 'diagnostic_warnings',
-				enabled = function() return lsp.diagnostics_exist('Warning') end,
+				enabled = function() return lsp.diagnostics_exist('Warn') end,
 				hl = { fg = 'yellow' }
 			},
 			{
@@ -125,7 +125,7 @@ local components = {
 			},
 			{
 				provider = 'diagnostic_info',
-				enabled = function() return lsp.diagnostics_exist('Information') end,
+				enabled = function() return lsp.diagnostics_exist('Info') end,
 				hl = { fg = 'skyblue' }
 			},
 		},
