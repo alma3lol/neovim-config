@@ -1,6 +1,8 @@
 syntax on
 let $CWD=expand("<sfile>:p:h")
 
+let $CWF=expand("%:p:h")
+
 set completeopt=menuone,noselect
 set ff=unix
 set mouse=a
@@ -75,15 +77,12 @@ if !filereadable(expand("$vimPlugPath"))
     endif
     echom "Vim-plug installed successfuly."
     so $vimPlugPath
+    PlugInstall --sync | close
 endif
 
 so $CWD/bindings.vim
 so $VIMRUNTIME/plugin/rplugin.vim
 so $CWD/plugins.vim
-
-if (s:vimPlugJustInstalled == v:true)
-    PlugClean! | PlugUpdate --sync | close
-endif
 
 let $colorschemeSet = exists('$colorschemeSet') ? v:true : v:false
 if ($colorschemeSet == v:false)
@@ -96,30 +95,34 @@ autocmd VimEnter * PlugClean! | PlugUpdate --sync | close
 let g:instant_username = "Alma3lol"
 
 if !isdirectory(expand("$CWD/vscode-firefox-debug"))
+    cd $CWD
     echo "Installing vscode-firefox-debug..."
     !git clone https://github.com/firefox-devtools/vscode-firefox-debug.git
     cd vscode-firefox-debug
     !npm i
     !npm run build
-    cd $CWD
+    cd $CWF
 endif
 if !isdirectory(expand("$CWD/vscode-chrome-debug"))
+    cd $CWD
     echo "Installing vscode-chrome-debug..."
     !git clone https://github.com/microsoft/vscode-chrome-debug.git
     cd vscode-chrome-debug
     !npm i
     !npm run build
-    cd $CWD
+    cd $CWF
 endif
 if !isdirectory(expand("$CWD/vscode-node-debug2"))
+    cd $CWD
     echo "Installing vscode-node-debug2..."
     !git clone https://github.com/microsoft/vscode-node-debug2.git
     cd vscode-node-debug2
     !npm i
     !npx gulp build
-    cd $CWD
+    cd $CWF
 endif
 if !isdirectory(expand("$CWD/lua-language-server"))
+    cd $CWD
     echo "Installing lua-language-server..."
     !git clone https://github.com/sumneko/lua-language-server
     cd lua-language-server
@@ -136,7 +139,7 @@ if !isdirectory(expand("$CWD/lua-language-server"))
     else
         !3rd/luamake/luamake rebuild
     endif
-    cd $CWD
+    cd $CWF
 endif
 let g:dashboard_default_executive = 'telescope'
 lua require'terminal'.setup()
