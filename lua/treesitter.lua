@@ -69,10 +69,12 @@ require('nvim-treesitter.configs').setup {
 			enable = true,
 			lookahead = true,
 			keymaps = {
-				["af"] = "@function.outer",
+				["of"] = "@function.outer",
 				["if"] = "@function.inner",
-				["ac"] = "@call.outer",
+				["oc"] = "@call.outer",
 				["ic"] = "@call.inner",
+				["oC"] = "@class.outer",
+				["iC"] = "@class.inner",
 			},
 		},
 		swap = {
