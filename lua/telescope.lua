@@ -30,8 +30,6 @@ require('telescope').setup {
             i = {
                 ["<Esc>"] = actions.close,
                 ["<C-c>"] = false,
-                -- ["<C-d>"] = actions.delete,
-                -- ["<C-r>"] = actions.rename,
             },
         }
     },
@@ -53,6 +51,15 @@ require('telescope').setup {
                 ["conf"] = vim.env.CWD,
                 ["work"] = vim.env.WORK
             }
+        },
+        file_browser = {
+            them = 'ivy',
+            mappings = {
+                i = {
+                    ["<Esc>"] = actions.close,
+                    ["<C-c>"] = false,
+                },
+            }
         }
     }
 }
@@ -66,3 +73,4 @@ require("telescope").load_extension("emoji")
 require("telescope").load_extension("tmux")
 require("telescope").load_extension("frecency");
 require('telescope').load_extension('neoclip');
+require('telescope').load_extension('file_browser');

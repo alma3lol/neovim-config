@@ -114,7 +114,7 @@ nnoremap <C-k>s :wa<CR>
 nnoremap <C-k>w :bufdo bd<CR>
 
 nnoremap <leader><leader>of :e <C-R>=expand("<cfile>")<CR><CR>
-nnoremap <leader>cd :Telescope file_browser hidden=true cwd=<C-R>=expand('%:p:h')<CR><CR>
+nnoremap <leader>cd :lua require 'telescope'.extensions.file_browser.file_browser({ hidden = true, path="<C-R>=expand('%:p:h')<CR>" })<CR>
 
 nnoremap <leader>rr :LspRestart<CR>
 nnoremap <leader>ii :LspInfo<CR>
@@ -153,8 +153,8 @@ nnoremap <leader>fh :Telescope help_tags<CR>
 nnoremap <leader>fhw :h <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>fm :Telescope marks<CR>
 nnoremap <leader>ff :Telescope find_files hidden=true<CR>
-nnoremap <leader>fd :Telescope file_browser cwd=$CWD hidden=true<CR>
-nnoremap <leader>fe :Telescope file_browser hidden=true<CR>
+nnoremap <leader>fd :lua require 'telescope'.extensions.file_browser.file_browser({ hidden = true, path=vim.env.CWD })<CR>
+nnoremap <leader>fe :lua require 'telescope'.extensions.file_browser.file_browser({ hidden = true })<CR>
 nnoremap <leader>fb :Telescope buffers<CR>
 nnoremap <leader>fr :Telescope frecency<CR>
 nnoremap <leader>fds :Telescope lsp_document_symbols<CR>
