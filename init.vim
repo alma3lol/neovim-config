@@ -3,7 +3,7 @@ let $CWD=expand("<sfile>:p:h")
 
 let $CWF=expand("%:p:h")
 
-set completeopt=menuone,noselect
+set completeopt=menu,menuone,noselect
 set ff=unix
 set mouse=a
 set modelines=0
