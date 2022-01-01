@@ -305,7 +305,7 @@ nnoremap <leader>vb <C-V>}
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 nnoremap <silent> <leader>sl :call SourceCurrentLine()<CR>
 nnoremap <silent> <leader>ca :Lspsaga code_action<CR>
-nnoremap <silent> gs :Lspsaga signature_help<CR>
+nnoremap <silent> <leader>gs :Lspsaga signature_help<CR>
 nnoremap <silent> gd :Lspsaga lsp_finder<CR>
 nnoremap <silent> <C-f> <cmd>lua require('lspsaga.hover').smart_scroll_hover(1)<CR>
 nnoremap <silent> <C-b> <cmd>lua require('lspsaga.hover').smart_scroll_hover(-1)<CR>
