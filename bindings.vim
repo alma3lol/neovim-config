@@ -163,6 +163,7 @@ nnoremap <leader>cs :Telescope colorscheme<CR>
 nnoremap <leader><leader>p :Telescope project<CR>
 nnoremap <leader>sa :wa<CR>
 nnoremap <leader>ss :Startify<CR>
+nnoremap <leader>ls :SearchSession<CR>
 nnoremap <leader>pp :VsnipOpen<CR>
 nnoremap <leader>nn :NERDTreeToggle<CR>
 nnoremap <leader>zz :ZenMode<CR>

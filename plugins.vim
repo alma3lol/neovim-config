@@ -105,4 +105,5 @@ Plug 'andymass/vim-matchup'
 Plug 'github/copilot.vim'
 Plug 'booperlv/nvim-gomove'
 Plug 'rmagatti/auto-session'
+Plug 'rmagatti/session-lens'
 call plug#end()

@@ -168,6 +168,7 @@ luafile $CWD/lua/lspsaga-config.lua
 luafile $CWD/lua/lspinstall.lua
 luafile $CWD/lua/octo.lua
 luafile $CWD/lua/package-info.lua
+luafile $CWD/lua/session-lens.lua
 so $CWD/signify.vim
 so $CWD/sneak.vim
 so $CWD/syntastic.vim
