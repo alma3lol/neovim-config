@@ -151,6 +151,7 @@ so $CWD/compe.vim
 luafile $CWD/lua/bufferline.lua
 luafile $CWD/lua/compe-config.lua
 luafile $CWD/lua/neoclip.lua
+luafile $CWD/lua/neorg.lua
 luafile $CWD/lua/dap-config.lua
 luafile $CWD/lua/dap-ui-config.lua
 luafile $CWD/lua/dap-virtual-text.lua

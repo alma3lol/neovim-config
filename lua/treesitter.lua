@@ -11,7 +11,10 @@ require('nvim-treesitter.configs').setup {
 		'jsdoc',
 		'html',
 		'css',
-		'dockerfile'
+		'dockerfile',
+		'norg',
+		'norg_meta',
+		'norg_table',
 	},
 	highlight = {
 		enable = true,
