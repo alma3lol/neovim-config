@@ -393,12 +393,6 @@ inoremap <leader><leader><BS> <Esc>v0c
 inoremap <leader><leader>o <Esc>o
 inoremap <leader><leader>no <Esc>O
 inoremap <leader><leader>p <Esc>pa
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <NULL> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4  })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4  })
 inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
 inoremap <c-j> <esc>:m .+1<CR>==a
 inoremap <c-k> <esc>:m .-2<CR>==a
