@@ -45,6 +45,7 @@ set noshowmode
 set cmdheight=2
 set nocompatible
 set hidden
+set sessionoptions+=winpos,terminal
 
 if !isdirectory(expand("$CWD/backup"))
     silent call system(expand("mkdir $CWD/backup")) | redraw!
@@ -144,6 +145,7 @@ endif
 let g:dashboard_default_executive = 'telescope'
 lua require'terminal'.setup()
 
+luafile $CWD/lua/autosession.lua
 so $CWD/bufbuild.vim
 so $CWD/compe.vim
 luafile $CWD/lua/bufferline.lua

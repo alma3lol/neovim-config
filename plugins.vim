@@ -104,4 +104,5 @@ Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'andymass/vim-matchup'
 Plug 'github/copilot.vim'
 Plug 'booperlv/nvim-gomove'
+Plug 'rmagatti/auto-session'
 call plug#end()
