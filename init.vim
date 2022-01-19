@@ -46,6 +46,7 @@ set cmdheight=2
 set nocompatible
 set hidden
 set sessionoptions+=winpos,terminal
+set cursorline
 
 if !isdirectory(expand("$CWD/backup"))
     silent call system(expand("mkdir $CWD/backup")) | redraw!
@@ -184,7 +185,7 @@ so $CWD/vsnips.vim
 luafile $CWD/lua/zenmode.lua
 
 highlight link LspSagaFinderSelection Search
-let test#strategy = "dispatch"
+let test#strategy = "neovim"
 
 augroup LuaHighlight
     au!
