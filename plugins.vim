@@ -107,4 +107,5 @@ Plug 'booperlv/nvim-gomove'
 Plug 'rmagatti/auto-session'
 Plug 'rmagatti/session-lens'
 Plug 'nvim-neorg/neorg'
+Plug 'untitled-ai/jupyter_ascending.vim'
 call plug#end()
