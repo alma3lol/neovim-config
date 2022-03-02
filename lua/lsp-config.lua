@@ -166,5 +166,5 @@ nvim_lsp.jsonls.setup {
 }
 
 nvim_lsp.solidity_ls.setup{
-  on_attach = require "lsp-format".on_attach,
+  on_attach = on_attach,
 }
