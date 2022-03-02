@@ -36,8 +36,8 @@ require('nvim-treesitter.configs').setup {
 			enable = true,
 			border = "none",
 			peek_definition_code = {
-				["<leader>df"] = "@function.outer",
-				["<leader>dc"] = "@class.outer",
+				-- [",df"] = "@function.outer",
+				-- [",dc"] = "@class.outer",
 			},
 		},
 		move = {
@@ -71,6 +71,7 @@ require('nvim-treesitter.configs').setup {
 		select = {
 			enable = true,
 			lookahead = true,
+			lookbehind = true,
 			keymaps = {
 				["of"] = "@function.outer",
 				["if"] = "@function.inner",
@@ -83,10 +84,10 @@ require('nvim-treesitter.configs').setup {
 		swap = {
 			enable = true,
 			swap_next = {
-				[",a"] = "@parameter.inner",
+				["<leader>a"] = "@parameter.inner",
 			},
 			swap_previous = {
-				[",A"] = "@parameter.inner",
+				["<leader><leader>a"] = "@parameter.inner",
 			},
 		},
 	},
@@ -122,8 +123,8 @@ require('nvim-treesitter.configs').setup {
 				goto_definition = "gnd",
 				list_definitions = "gnD",
 				list_definitions_toc = "gO",
-				goto_next_usage = "<a-*>",
-				goto_previous_usage = "<a-#>",
+				goto_next_usage = "<a-@>",
+				goto_previous_usage = "<a-!>",
 			},
 		},
 	}

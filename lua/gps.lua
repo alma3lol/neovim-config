@@ -7,6 +7,15 @@ require("nvim-gps").setup({
 		["tag-name"] = '炙'
 	},
 	languages = {
+		["typescript"] = {
+			icons = {
+				["class-name"] = ' ',
+				["function-name"] = ' ',
+				["method-name"] = ' ',
+				["container-name"] = '⛶ ',
+				["tag-name"] = '炙'
+			}
+		},
 		["json"] = {
 			icons = {
 				["array-name"] = ' ',

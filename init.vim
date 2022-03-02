@@ -11,6 +11,7 @@ set wrap
 set pastetoggle=<F2>
 set formatoptions=tcqrn1
 set noerrorbells
+set autoindent
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -23,7 +24,7 @@ set laststatus=2
 set showcmd
 set matchpairs+=<:>
 set list
-set listchars=tab:>\ ,trail:*,extends:#,nbsp:.
+set listchars=tab:>\ ,trail:*,extends:#,nbsp:.,eol:↴,space:·
 set number
 set encoding=utf-8
 set incsearch
@@ -47,6 +48,10 @@ set nocompatible
 set hidden
 set sessionoptions+=winpos,terminal
 set cursorline
+set foldenable
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set foldnestmax=1
 
 if !isdirectory(expand("$CWD/backup"))
     silent call system(expand("mkdir $CWD/backup")) | redraw!
@@ -82,7 +87,6 @@ if !filereadable(expand("$vimPlugPath"))
     PlugInstall --sync | close
 endif
 
-so $CWD/bindings.vim
 so $VIMRUNTIME/plugin/rplugin.vim
 so $CWD/plugins.vim
 
@@ -92,7 +96,7 @@ if ($colorschemeSet == v:false)
     let $colorschemeSet=v:true
 endif
 
-autocmd VimEnter * PlugClean! | PlugUpdate --sync | close
+" autocmd VimEnter * PlugClean! | PlugUpdate --sync | close
 
 let g:instant_username = "Alma3lol"
 
@@ -148,6 +152,7 @@ lua require'terminal'.setup()
 
 luafile $CWD/lua/autosession.lua
 so $CWD/bufbuild.vim
+so $CWD/bindings.vim
 so $CWD/compe.vim
 luafile $CWD/lua/bufferline.lua
 luafile $CWD/lua/compe-config.lua
@@ -165,9 +170,11 @@ luafile $CWD/lua/feline.lua
 luafile $CWD/lua/functions.lua
 luafile $CWD/lua/gitsigns.lua
 luafile $CWD/lua/gps.lua
+luafile $CWD/lua/indent_blankline.lua
 luafile $CWD/lua/lsp-config.lua
+luafile $CWD/lua/lsp-format.lua
 luafile $CWD/lua/lspsaga-config.lua
-luafile $CWD/lua/lspinstall.lua
+luafile $CWD/lua/lsp-installer.lua
 luafile $CWD/lua/octo.lua
 luafile $CWD/lua/package-info.lua
 luafile $CWD/lua/session-lens.lua

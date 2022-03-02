@@ -1,5 +1,5 @@
 local dap = require('dap')
-local variables = require('dap.ui.variables')
+-- local variables = require('dap.ui.variables')
 local lspSaga = require('lspsaga.hover')
 
 function _G.HoverInfo()
@@ -10,6 +10,6 @@ function _G.HoverInfo()
 	if debugSession == nil or debugSession.stopped_thread_id == nil then
 		lspSaga.render_hover_doc()
 	else
-		variables.hover()
+		-- variables.hover()
 	end
 end

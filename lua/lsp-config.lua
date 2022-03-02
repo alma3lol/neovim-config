@@ -14,7 +14,8 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 nvim_lsp.tsserver.setup {
     capabilities = capabilities,
-    on_attach = function()
+    on_attach = function(client)
+        require "lsp-format".on_attach(client)
         vim.api.nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
         vim.api.nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
         vim.api.nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
@@ -36,6 +37,7 @@ table.insert(runtime_path, "lua/?/init.lua")
 
 nvim_lsp.sumneko_lua.setup {
   cmd = { lua_bin, "-E", vim.fn.expand("$CWD/lua-language-server/main.lua") },
+  on_attach = require "lsp-format".on_attach,
   settings = {
     Lua = {
       runtime = {
@@ -112,3 +114,5 @@ nvim_lsp.jsonls.setup {
     }
   }
 }
+
+nvim_lsp.solidity_ls.setup{}

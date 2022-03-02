@@ -93,6 +93,9 @@ endfunction
 function! CreateJupyterAscendingNotebook()
 	" get a new file name
 	let $fileName = input('New notebook name > ')
+	if $fileName == ''
+		return
+	endif
 	" get the current directory
 	let $currentDirectory = expand('%:p')
 	" execute the system command `python -m jupyter_ascending.scripts.make_pair --base $fileName`
@@ -122,7 +125,7 @@ nnoremap <M-l> :SidewaysRight<CR>
 nnoremap <C-k>s :wa<CR>
 nnoremap <C-k>w :bufdo bd<CR>
 
-nnoremap <leader><leader>of :e <C-R>=expand("<cfile>")<CR><CR>
+nnoremap <leader>of :e <C-R>=expand("<cfile>")<CR><CR>
 nnoremap <leader>cd :lua require 'telescope'.extensions.file_browser.file_browser({ hidden = true, path="<C-R>=expand('%:p:h')<CR>" })<CR>
 
 nnoremap <leader>rr :LspRestart<CR>
@@ -380,6 +383,8 @@ nnoremap <leader>ce :lua require("harpoon.term").sendCommand(1, 2)<CR>
 nnoremap <leader><leader>mj :call CreateJupyterAscendingNotebook()<CR>
 nmap <leader><leader>x <Plug>JupyterExecute
 nmap <leader><leader>X <Plug>JupyterExecuteAll
+
+luafile $CWD/lua/bindings.lua
 
 "
 "
