@@ -111,4 +111,5 @@ Plug 'untitled-ai/jupyter_ascending.vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'lukas-reineke/lsp-format.nvim'
+Plug 'onsails/lspkind-nvim'
 call plug#end()

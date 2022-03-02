@@ -1,4 +1,6 @@
 local cmp = require'cmp'
+local lspkind = require'lspkind'
+
 
 cmp.setup({
 	snippet = {
@@ -28,7 +30,10 @@ cmp.setup({
 		{ name = 'neorg' },
 	}, {
 		{ name = 'buffer' },
-	})
+	}),
+	formatting = {
+		format = lspkind.cmp_format({mode = 'symbol', maxwidth = 50})
+	}
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
