@@ -1,3 +1,4 @@
+local lsp_status = require "lsp-status"
 local lsp = require('feline.providers.lsp')
 local vi_mode_utils = require('feline.providers.vi_mode')
 local git_branch = require('feline.providers.git').git_branch
@@ -89,6 +90,18 @@ local components = {
 					fg = '#e0af68'
 				},
 				right_sep = ' ',
+			},
+			{
+				provider = function ()
+					return lsp_status.status()
+				end,
+				enabled = function ()
+					local enabled = true
+					if #vim.lsp.buf_get_clients() == 0 then
+						enabled = false
+					end
+					return enabled
+				end
 			},
 			{
 				provider = function ()
