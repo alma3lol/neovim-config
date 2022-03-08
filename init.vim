@@ -92,7 +92,8 @@ so $CWD/plugins.vim
 
 let $colorschemeSet = exists('$colorschemeSet') ? v:true : v:false
 if ($colorschemeSet == v:false)
-    colorscheme aurora
+    lua vim.g.tokyonight_style = "night"
+    colorscheme tokyonight
     let $colorschemeSet=v:true
 endif
 

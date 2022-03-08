@@ -112,4 +112,5 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'lukas-reineke/lsp-format.nvim'
 Plug 'onsails/lspkind-nvim'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 call plug#end()
