@@ -1,18 +1,35 @@
 require'lualine'.setup {
 	options = {
 		icons_enabled = true,
-		theme = 'dracula',
-		component_separators = {'', ''},
-		section_separators = {'', ''},
+		theme = 'auto',
+		component_separators = '|',
+		section_separators = { left = '', right = '' },
 		disabled_filetypes = {}
 	},
 	sections = {
-		lualine_a = {'mode'},
-		lualine_b = {'branch'},
-		lualine_c = {'filename'},
-		lualine_x = {'encoding', 'fileformat', 'filetype'},
-		lualine_y = {'progress'},
-		lualine_z = {'location'}
+		lualine_a = {
+			{ 'mode', separator = { left = '' }, right_padding = 2 },
+		},
+		lualine_b = {'branch', 'diff', 'diagnostics'},
+		lualine_c = {
+			'filename',
+			'filesize',
+			"os.date('%A, %d %B %Y')",
+			{ 'lsp_client_names()', icon = '', color = { fg = '#e0af68', gui = 'bold' }, },
+			"require'lsp-status'.status()"
+		},
+		lualine_x = {
+			'encoding',
+			'fileformat',
+			'filetype'
+		},
+		lualine_y = {
+			'battery_status()',
+			'progress',
+		},
+		lualine_z = {
+			{ 'location', separator = { right = '' }, left_padding = 2 },
+		},
 	},
 	inactive_sections = {
 		lualine_a = {},
@@ -25,4 +42,3 @@ require'lualine'.setup {
 	tabline = {},
 	extensions = {}
 }
-

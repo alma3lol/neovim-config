@@ -166,8 +166,8 @@ so $CWD/denite.vim
 so $CWD/emmet.vim
 so $CWD/whichkey.vim
 so $CWD/floaterm.vim
-luafile $CWD/lua/feline-providers.lua
-luafile $CWD/lua/feline.lua
+" luafile $CWD/lua/feline-providers.lua
+" luafile $CWD/lua/feline.lua
 luafile $CWD/lua/functions.lua
 luafile $CWD/lua/gitsigns.lua
 luafile $CWD/lua/gps.lua
@@ -176,6 +176,7 @@ luafile $CWD/lua/lsp-format.lua
 luafile $CWD/lua/lsp-config.lua
 luafile $CWD/lua/lspsaga-config.lua
 luafile $CWD/lua/lsp-installer.lua
+luafile $CWD/lua/lualine.lua
 luafile $CWD/lua/octo.lua
 luafile $CWD/lua/package-info.lua
 luafile $CWD/lua/session-lens.lua

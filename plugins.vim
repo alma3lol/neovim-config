@@ -115,4 +115,5 @@ Plug 'haringsrob/nvim_context_vt'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'kdheepak/lazygit.nvim'
 Plug 'numToStr/Comment.nvim'
+Plug 'nvim-lualine/lualine.nvim'
 call plug#end()
