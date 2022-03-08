@@ -154,7 +154,6 @@ lua require'terminal'.setup()
 luafile $CWD/lua/autosession.lua
 so $CWD/bufbuild.vim
 so $CWD/bindings.vim
-so $CWD/compe.vim
 luafile $CWD/lua/bufferline.lua
 luafile $CWD/lua/commment.lua
 luafile $CWD/lua/compe-config.lua
