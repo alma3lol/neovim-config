@@ -286,7 +286,7 @@ nnoremap <leader>ot :tabonly<CR>
 nnoremap <leader><leader>v V
 
 nnoremap <leader>tt :Twilight<CR>
-nnoremap <leader>tg :FloatermNew lazygit<CR>
+nnoremap <leader>tg :LazyGit<CR>
 nnoremap <leader>tb :TagbarToggle<CR>
 nnoremap <leader>ts :Telescope tmux sessions<CR>
 nnoremap <leader>tw :Telescope tmux windows<CR>
