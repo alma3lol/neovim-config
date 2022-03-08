@@ -1,6 +1,5 @@
 call plug#begin("$CWD/plugged")
 Plug 'lambdalisue/battery.vim'
-Plug 'tpope/vim-commentary'
 Plug 'preservim/nerdtree'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'mbbill/undotree'
@@ -115,4 +114,5 @@ Plug 'onsails/lspkind-nvim'
 Plug 'haringsrob/nvim_context_vt'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'kdheepak/lazygit.nvim'
+Plug 'numToStr/Comment.nvim'
 call plug#end()
