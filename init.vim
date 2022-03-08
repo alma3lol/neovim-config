@@ -155,7 +155,7 @@ luafile $CWD/lua/autosession.lua
 so $CWD/bufbuild.vim
 so $CWD/bindings.vim
 luafile $CWD/lua/bufferline.lua
-luafile $CWD/lua/commment.lua
+luafile $CWD/lua/comment.lua
 luafile $CWD/lua/compe-config.lua
 luafile $CWD/lua/neoclip.lua
 luafile $CWD/lua/neorg.lua
