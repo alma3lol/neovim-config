@@ -117,4 +117,5 @@ Plug 'kdheepak/lazygit.nvim'
 Plug 'numToStr/Comment.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'folke/todo-comments.nvim'
+Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
 call plug#end()
