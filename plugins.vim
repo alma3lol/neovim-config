@@ -116,4 +116,5 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'kdheepak/lazygit.nvim'
 Plug 'numToStr/Comment.nvim'
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'folke/todo-comments.nvim'
 call plug#end()

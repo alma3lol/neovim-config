@@ -189,6 +189,7 @@ luafile $CWD/lua/treesitter.lua
 luafile $CWD/lua/treesitter-context.lua
 luafile $CWD/lua/trouble.lua
 luafile $CWD/lua/toggleterm.lua
+luafile $CWD/lua/todo-comments.lua
 luafile $CWD/lua/twilight.lua
 so $CWD/vsnips.vim
 luafile $CWD/lua/zenmode.lua
