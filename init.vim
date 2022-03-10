@@ -166,8 +166,6 @@ so $CWD/denite.vim
 so $CWD/emmet.vim
 so $CWD/whichkey.vim
 so $CWD/floaterm.vim
-" luafile $CWD/lua/feline-providers.lua
-" luafile $CWD/lua/feline.lua
 luafile $CWD/lua/functions.lua
 luafile $CWD/lua/gitsigns.lua
 luafile $CWD/lua/gps.lua
