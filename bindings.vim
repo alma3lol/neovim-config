@@ -174,7 +174,9 @@ nnoremap <leader>fws :Telescope lsp_workspace_symbols<CR>
 nnoremap <leader>cs :Telescope colorscheme<CR>
 nnoremap <leader><leader>p :Telescope project<CR>
 nnoremap <leader>sa :wa<CR>
-nnoremap <leader>ss :Startify<CR>
+nnoremap <leader>ss <cmd>lua require('spectre').open()<CR>
+nnoremap <leader>sw <cmd>lua require('spectre').open_visual({select_word=true})<CR>
+nnoremap <leader>sc viw:lua require('spectre').open_file_search()<CR>
 nnoremap <leader>ls :SearchSession<CR>
 nnoremap <leader>pp :VsnipOpen<CR>
 nnoremap <leader>nn :NERDTreeToggle<CR>
@@ -403,6 +405,7 @@ vnoremap <leader>sl :<C-w>call SourceSelectedLines()<CR>
 vnoremap <leader>ca :<C-U>Lspsaga range_code_action<CR>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+vnoremap <leader>ss <cmd>lua require('spectre').open_visual()<CR>
 
 "
 " Insert mode bindings
