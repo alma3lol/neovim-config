@@ -177,6 +177,7 @@ luafile $CWD/lua/lsp-config.lua
 luafile $CWD/lua/lspsaga-config.lua
 luafile $CWD/lua/lsp-installer.lua
 luafile $CWD/lua/lualine.lua
+luafile $CWD/lua/luasnip.lua
 luafile $CWD/lua/octo.lua
 luafile $CWD/lua/package-info.lua
 luafile $CWD/lua/session-lens.lua
@@ -191,7 +192,6 @@ luafile $CWD/lua/trouble.lua
 luafile $CWD/lua/toggleterm.lua
 luafile $CWD/lua/todo-comments.lua
 luafile $CWD/lua/twilight.lua
-so $CWD/vsnips.vim
 luafile $CWD/lua/zenmode.lua
 
 highlight link LspSagaFinderSelection Search
