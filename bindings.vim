@@ -173,13 +173,13 @@ nnoremap <leader>fr :Telescope frecency<CR>
 nnoremap <leader>fds :Telescope lsp_document_symbols<CR>
 nnoremap <leader>fws :Telescope lsp_workspace_symbols<CR>
 nnoremap <leader>cs :Telescope colorscheme<CR>
-nnoremap <leader><leader>p :Telescope project<CR>
+nnoremap <leader><leader>p :Telescope command_palette<CR>
 nnoremap <leader>sa :wa<CR>
 nnoremap <leader>ss <cmd>lua require('spectre').open()<CR>
 nnoremap <leader>sw <cmd>lua require('spectre').open_visual({select_word=true})<CR>
 nnoremap <leader>sc viw:lua require('spectre').open_file_search()<CR>
 nnoremap <leader>ls :SearchSession<CR>
-nnoremap <leader>pp :VsnipOpen<CR>
+nnoremap <leader>pp :LuaSnipListAvailable<CR>
 nnoremap <leader>nn :NERDTreeToggle<CR>
 nnoremap <leader>zz :ZenMode<CR>
 nnoremap <leader><leader>nr :Telescope neoclip<CR>

@@ -118,4 +118,5 @@ Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'LinArcX/telescope-command-palette.nvim'
 call plug#end()
