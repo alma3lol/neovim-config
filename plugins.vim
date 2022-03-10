@@ -115,6 +115,7 @@ Plug 'numToStr/Comment.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'folke/todo-comments.nvim'
 Plug 'windwp/nvim-spectre'
+Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'saadparwaiz1/cmp_luasnip'

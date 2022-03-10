@@ -129,6 +129,7 @@ nnoremap <leader>of :e <C-R>=expand("<cfile>")<CR><CR>
 nnoremap <leader>cd :lua require 'telescope'.extensions.file_browser.file_browser({ hidden = true, path="<C-R>=expand('%:p:h')<CR>" })<CR>
 
 nnoremap <leader>rr :LspRestart<CR>
+nnoremap <leader>rs :SnipRun<CR>
 nnoremap <leader>ii :LspInfo<CR>
 
 nnoremap gh :call v:lua.HoverInfo()<CR>
@@ -406,6 +407,7 @@ vnoremap <leader>ca :<C-U>Lspsaga range_code_action<CR>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 vnoremap <leader>ss <cmd>lua require('spectre').open_visual()<CR>
+vnoremap <leader>rs :'<,'>SnipRun<CR>
 
 "
 " Insert mode bindings
