@@ -16,7 +16,9 @@ require'lualine'.setup {
 			'filesize',
 			"os.date('%A, %d %B %Y')",
 			{ 'lsp_client_names()', icon = '', color = { fg = '#e0af68', gui = 'bold' }, },
-			"require'lsp-status'.status()"
+			"require'lsp-status'.status()",
+			{ "require('package-info').get_status()", color = { gui = 'bold' }, cond = function() return require('package-info').get_status() == '' end },
+			{ "require('nvim-gps').get_location()", cond = function () return require('nvim-gps').is_available() end },
 		},
 		lualine_x = {
 			'encoding',
