@@ -119,4 +119,6 @@ Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'LinArcX/telescope-command-palette.nvim'
+Plug 'ilAYAli/scMRU.nvim'
+Plug 'linty-org/key-menu.nvim'
 call plug#end()

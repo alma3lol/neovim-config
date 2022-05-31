@@ -84,5 +84,8 @@ end
 
 M.nnoremap('<leader><leader>uf', '<cmd>%foldo<CR>')
 M.nnoremap('<leader><leader>df', '<cmd>%foldc<CR>')
+M.nnoremap('<leader>mrr', '<cmd>MruRepo<CR>')
+M.nnoremap('<leader>mrf', '<cmd>Mru<CR>')
+M.nnoremap('<leader>mff', '<cmd>Mfu<CR>')
 
 return M

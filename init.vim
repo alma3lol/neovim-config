@@ -88,6 +88,7 @@ if !filereadable(expand("$vimPlugPath"))
 endif
 
 so $VIMRUNTIME/plugin/rplugin.vim
+luafile $CWD/lua/outline.lua
 so $CWD/plugins.vim
 
 let $colorschemeSet = exists('$colorschemeSet') ? v:true : v:false
@@ -170,6 +171,7 @@ luafile $CWD/lua/functions.lua
 luafile $CWD/lua/gitsigns.lua
 luafile $CWD/lua/gps.lua
 luafile $CWD/lua/indent_blankline.lua
+luafile $CWD/lua/keymenu.lua
 luafile $CWD/lua/lsp-format.lua
 luafile $CWD/lua/lsp-config.lua
 luafile $CWD/lua/lspsaga-config.lua

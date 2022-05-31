@@ -182,7 +182,7 @@ nnoremap <leader>ls :SearchSession<CR>
 nnoremap <leader>pp :LuaSnipListAvailable<CR>
 nnoremap <leader>nn :NERDTreeToggle<CR>
 nnoremap <leader>zz :ZenMode<CR>
-nnoremap <leader><leader>nr :Telescope neoclip<CR>
+nnoremap <leader>nc :Telescope neoclip<CR>
 
 nnoremap <leader>gg :G<CR>
 nnoremap <leader>gf :Telescope git_files<CR>
@@ -338,8 +338,8 @@ nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<cr>
 nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
 nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
 nnoremap gR <cmd>TroubleToggle lsp_references<cr>
-nmap <C-/> vgc
-nmap <leader>/ vgc
+nmap <C-/> gcc
+nmap <leader>/ gcc
 
 nnoremap n nzzzv
 nnoremap N Nzzzv
@@ -351,7 +351,7 @@ nnoremap <leader>k :m .-2<CR>==
 noremap <silent> <leader>ns :lua require('package-info').show()<CR>
 
 " Hide package versions
-noremap <silent> <leader>nc :lua require('package-info').hide()<CR>
+noremap <silent> <leader>nh :lua require('package-info').hide()<CR>
 
 " Update package on line
 noremap <silent> <leader>nu :lua require('package-info').update()<CR>
@@ -404,8 +404,8 @@ vmap <leader>s[ S[
 vmap <leader>s9 S(
 vnoremap <leader>sl :<C-w>call SourceSelectedLines()<CR>
 vnoremap <leader>ca :<C-U>Lspsaga range_code_action<CR>
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
+vnoremap <leader>j :m '>+1<CR>gv=gv
+vnoremap <leader>k :m '<-2<CR>gv=gv
 vnoremap <leader>ss <cmd>lua require('spectre').open_visual()<CR>
 vnoremap <leader>rs :'<,'>SnipRun<CR>
 
@@ -431,5 +431,5 @@ tnoremap <silent> <A-d> <C-\><C-n>:Lspsaga close_floaterm<CR>
 " Maps with comma (,)
 "
 nnoremap ,f :Telescope current_buffer_fuzzy_find<CR>
-nnoremap ,ds :Telescope lsp_document_symbols<CR>
-nnoremap ,ws :Telescope lsp_workspace_symbols query=<C-R>=expand("<cword>")<CR><CR>
+nnoremap ,sd :Telescope lsp_document_symbols<CR>
+nnoremap ,sw :Telescope lsp_workspace_symbols query=<C-R>=expand("<cword>")<CR><CR>

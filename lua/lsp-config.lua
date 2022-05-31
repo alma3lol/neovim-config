@@ -26,12 +26,14 @@ lsp_status.config({
 
 local on_attach = function(client, bufnr)
   lsp_status.on_attach(client, bufnr)
-  if client.resolved_capabilities.document_symbol then
+  if client.resolved_capabilities.document_symbol--[[  and client.name ~= "elixirls" ]] then
     vim.api.nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
     vim.api.nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
     vim.api.nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
   end
-  require "lsp-format".on_attach(client)
+  -- if client.name ~= "elixirls" then
+    require "lsp-format".on_attach(client)
+  -- end
   protocol.CompletionItemKind = {
     '', -- Text
     '', -- Method
@@ -69,6 +71,17 @@ nvim_lsp.tsserver.setup {
 nvim_lsp.pyright.setup {
   capabilities = capabilities,
   on_attach = on_attach,
+}
+
+nvim_lsp.elixirls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  cmd = { vim.env.HOME .. "/.local/share/nvim/lsp_servers/elixir/elixir-ls/language_server.sh" },
+  settings = {
+    elixirLS = {
+      fetchDeps = false,
+    }
+  }
 }
 
 local lua_bin = vim.fn.expand("$CWD/lua-language-server/bin/Windows/lua-language-server.exe")
