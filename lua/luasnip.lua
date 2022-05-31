@@ -53,8 +53,7 @@ local l = function (index)
     end, { index })
 end
 
-luasnip.snippets = {
-    typescript = {
+luasnip.add_snippets('typescript', {
         s('type', {
             t('export type '), i(1, ''), t({' = {' , '    '}), i(0, ''), t({'', '}'}),
         }),
@@ -373,7 +372,6 @@ luasnip.snippets = {
                     r(1),
             })
         ),
-    }
-}
+})
 
 require("luasnip.loaders.from_vscode").load({ paths = { vim.env.CWD .. "/vsnip", vim.env.CWD .. "/plugged/friendly-snippets" } })
