@@ -26,7 +26,7 @@ lsp_status.config({
 
 local on_attach = function(client, bufnr)
   lsp_status.on_attach(client, bufnr)
-  if client.resolved_capabilities.document_symbol--[[  and client.name ~= "elixirls" ]] then
+  if client.server_capabilities.document_symbol--[[  and client.name ~= "elixirls" ]] then
     vim.api.nvim_command [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
     vim.api.nvim_command [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
     vim.api.nvim_command [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
