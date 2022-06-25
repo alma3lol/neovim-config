@@ -183,6 +183,7 @@ luafile $CWD/lua/package-info.lua
 luafile $CWD/lua/session-lens.lua
 so $CWD/signify.vim
 so $CWD/sneak.vim
+luafile $CWD/lua/substitute.lua
 so $CWD/syntastic.vim
 so $CWD/telescope.vim
 luafile $CWD/lua/telescope.lua

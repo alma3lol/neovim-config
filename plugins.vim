@@ -121,4 +121,5 @@ Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'LinArcX/telescope-command-palette.nvim'
 Plug 'ilAYAli/scMRU.nvim'
 Plug 'linty-org/key-menu.nvim'
+Plug 'gbprod/substitute.nvim'
 call plug#end()
